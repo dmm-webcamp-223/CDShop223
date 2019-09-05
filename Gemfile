@@ -69,7 +69,7 @@ gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-
+gem 'kaminari','~> 1.1.1'
 
 
 
