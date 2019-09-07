@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recept_log_id: 1
+  purchase_price: 1
+  tax: 1
+  numbers: 1
+
+two:
+  recept_log_id: 1
+  purchase_price: 1
+  tax: 1
+  numbers: 1
