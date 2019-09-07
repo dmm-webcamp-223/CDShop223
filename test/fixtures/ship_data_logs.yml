@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  package_id: 1
+  ship_date: MyString
+  supplier: MyString
+  arrival_status: false
+
+two:
+  package_id: 1
+  ship_date: MyString
+  supplier: MyString
+  arrival_status: false
