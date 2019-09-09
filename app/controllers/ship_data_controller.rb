@@ -1,0 +1,2 @@
+class ShipDataController < ApplicationController
+end
