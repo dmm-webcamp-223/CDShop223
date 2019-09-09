@@ -13,45 +13,7 @@
     <div class="nav navbar-inverse">
       <div class="container">
         <span class="text-center">Shop 223</span>
-        <% if user_signed_in? %>
-        <nav class="nav navbar-nav navbar-left">
-
-
-
-        </nav>
-        <nav class="nav navbar-nav navbar-right">
-          
-
-
-
-
-        </nav>
-        <% else if admin_signed_in?%>
-        <nav class="nav navbar-nav navbar-left">
-
-
-
-        </nav>
-        <nav class="nav navbar-nav navbar-right">
-          
-
-
-
-
-        </nav>
-        <% else %>
-        <nav class="nav navbar-nav navbar-left">
-
-
-
-        </nav>
-        <nav class="nav navbar-nav navbar-right">
-          
-
-
-
-
-        </nav>
+       
       </div>
     </div>
     <%= yield %>
