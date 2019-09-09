@@ -2,4 +2,8 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :packages
+  resources :oder_logs, only: [:index :update :create]
+  root 'packages#index'
+
 end
