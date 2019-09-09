@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   
       devise_for :admins
 
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :carts, only: [:show]
   resources :cart_items, only: [:create, :update, :destroy]
-  
+  resources :packages
 
   
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   
         
     
+
 
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
