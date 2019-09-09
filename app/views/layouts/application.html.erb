@@ -10,6 +10,59 @@
   </head>
 
   <body>
+    <div class="nav navbar-inverse">
+      <div class="container">
+        <span class="text-center">Shop 223</span>
+        <% if user_signed_in? %>
+        <nav class="nav navbar-nav navbar-left">
+
+
+
+        </nav>
+        <nav class="nav navbar-nav navbar-right">
+          
+
+
+
+
+        </nav>
+        <% else if admin_signed_in?%>
+        <nav class="nav navbar-nav navbar-left">
+
+
+
+        </nav>
+        <nav class="nav navbar-nav navbar-right">
+          
+
+
+
+
+        </nav>
+        <% else %>
+        <nav class="nav navbar-nav navbar-left">
+
+
+
+        </nav>
+        <nav class="nav navbar-nav navbar-right">
+          
+
+
+
+
+        </nav>
+      </div>
+    </div>
     <%= yield %>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-9">
+            <p class="text-right">CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
