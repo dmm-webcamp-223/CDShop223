@@ -8,7 +8,7 @@ class CartItemsController < ApplicationController
   def purchase_check
   end
 
-  def purchase_comfamation
+  def purchase_comfirmation
   end
 
   def update

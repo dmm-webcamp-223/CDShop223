@@ -4,6 +4,11 @@ class PackagesController < ApplicationController
   end
 
   def show
+  	@package = Package.find(params[:id])
   end
 
+      private
+    def package_params
+        params.require(:package).permit(:title, :body)
+    end
 end
