@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'cart_items/create'
   get 'cart_items/purchase_page'
   get 'cart_items/purchase_check'
