@@ -1,0 +1,2 @@
+module OderLogsHelper
+end
