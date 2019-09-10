@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<%= @package.disc_image %>
+		</div>
+		<div class="col-xs-2">
+			<%= @package.title %>
+			<%= @artist.artist %>
+			<%= @label.label %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<%= @genre.category %>
+			<%= @package.price %>
+			<%= @package.disc_status %>
+			<%= @package.disc_stock %>
+		</div>
+		<div class="col-xs-8">
+			<table>
+				<tr>
+					<th>曲名</th>
+					<th>アーティスト名</th>
+				</tr>
+				<% @discs.each do |disc| %>
+				<tr>
+					<p>Disc.<%= disc.disc_number %></p>
+					<% disc.songs.each do |song| %>
+					<td><%= song.song_number%></td>
+					<td><%= song.song %></td>
+				</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
