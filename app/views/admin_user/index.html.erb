@@ -1,0 +1,16 @@
+<h1>ユーザー一覧(新規順)</h1>
+
+<%= form_tag(search_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
+<table>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= link_to "#{@user.fullname}", user_path(user.id) %><br>
+			<%= user.created_at.strfttime('%y/%m/%d') %>
+		</td>
+	</tr>
+	<% end %>
+</table>

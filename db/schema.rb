@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_111639) do
+ActiveRecord::Schema.define(version: 2019_09_09_122711) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2019_09_08_111639) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name_kanzi_sei"
+    t.string "name_kanzi_mei"
+    t.string "name_kasa_sei"
+    t.string "name_kana_mei"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -148,7 +152,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_111639) do
     t.datetime "remember_created_at"
     t.string "name_kanzi_sei"
     t.string "name_kanzi_mei"
-    t.string "name_kasa_sei"
+    t.string "name_kana_sei"
     t.string "name_kana_mei"
     t.integer "postal_code"
     t.string "address"

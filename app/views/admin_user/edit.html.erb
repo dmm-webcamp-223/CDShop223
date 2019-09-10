@@ -1,6 +1,6 @@
-<h2>新規登録</h2>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -43,22 +43,36 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
   <div class="field">
-    <p>パスワード</p>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上で入力)</em>
-    <% end %><br />
+    <p>新しいパスワード</p> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
   </div>
 
   <div class="field">
-    <p>パスワード確認</p><br />
+    <p>もう一度あtらしいパスワードを入力</p><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <p>現在のパスワード</p><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "登録" %>
+    <%= f.submit "Update" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<h3>アカウントの削除</h3>
+
+<p>Unhappy? <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "よろしいですか？" }, method: :delete %></p>
+
+<%= link_to "戻る", :back %>

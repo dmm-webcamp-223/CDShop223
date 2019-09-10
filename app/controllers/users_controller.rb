@@ -14,10 +14,4 @@ class UsersController < ApplicationController
   def show
   end
 
-  def admin_show
-    @users = User.search(params[:search])
-  end
-
-  def admin_edit
-  end
 end
