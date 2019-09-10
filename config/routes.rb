@@ -8,7 +8,15 @@ Rails.application.routes.draw do
   
   resources :carts, only: [:show]
   resources :cart_items, only: [:create, :update, :destroy]
-  resources :packages
+  
+  resources :artists, only: [:new, :create, :destroy]
+  resources :labels, only: [:new, :create, :destroy]
+  resources :genres, only: [:new, :create, :destroy]
+  
+  resources :packages, only: [:index, :new, :show, :create, :destroy]
+ 
+  
+  
 
   
   resources :users, only: [:index, :edit, :update, :show, :destroy] do

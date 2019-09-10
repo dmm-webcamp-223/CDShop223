@@ -1,0 +1,25 @@
+<h1>新規商品の追加</h1>
+
+<div class="item_name">
+  <%= form_for(@package) do |f| %>
+    <div class="field">
+        <h4>商品名</h4>
+        <%= f.text_field :title %>
+        <h4>値段</h4>
+        <%= f.text_field :price %>
+        <h4>ジャケット画像</h4>
+        <%= f.attachment_field :disc_image %>
+    </div>
+            <div id = 'discs'>
+                <%= f.fields_for :discs do |t| %>
+                <%= render "disc_fields", f: t %>
+  <% end %>
+            <div class = "links">
+                <%= link_to_add_association "ディスクを追加", f, :discs %>
+            </div>
+            </div>  
+  
+     <%= f.submit 'Save'%>
+  <% end %>
+  
+</div>
