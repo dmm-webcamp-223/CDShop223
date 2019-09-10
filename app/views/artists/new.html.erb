@@ -1,0 +1,26 @@
+<h1>アーティスト名一覧（名前順）</h1>
+
+<%= form_for(@artist) do |f| %>
+    <h4>アーティスト新規登録</h4>
+    <%= f.text_field :artist %>
+<%= f.submit '確定' %>
+<% end %>
+
+<session>
+  <h1>アーティスト名</h1>
+      <table>
+        	<tr>
+				<th>アーティスト名</th>
+				<th>削除</th>
+			</tr>
+        
+          <% @artists.each do |a| %>
+          <tr>
+              <td><%= a.artist %></td>
+              <td><%= link_to "削除", artist_path(a.id), method: :delete %></td>
+          </tr>
+          <% end %>
+      
+      </table>
+</session>
+

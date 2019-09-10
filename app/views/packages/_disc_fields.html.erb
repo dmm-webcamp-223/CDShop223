@@ -1,0 +1,12 @@
+<%# コクーンの部分テンプレート %>
+<div class="nested-fields">
+    <h4>ディスク番号</h4>
+    <%= f.text_field :disc_number %>
+    <%= link_to_remove_association "ディスクを削除", f %>
+
+    <%= f.fields_for :songs do |u| %>
+        <%= render "song_fields", f: u %>
+    <%end%>
+
+    <%= link_to_add_association "曲を追加", f, :songs %>
+</div>
