@@ -5,6 +5,10 @@ class PackagesController < ApplicationController
 
   def show
   	@package = Package.find(params[:id])
+    @genre = Genre.find(params[:id])
+    @artist = Artist.find(params[:id])
+    @label = Label.find(params[:id])
+    @discs = Disc.all.includes(:songs)
   end
   
   def new
