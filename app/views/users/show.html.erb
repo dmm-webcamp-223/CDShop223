@@ -1,2 +1,14 @@
 <h1>マイページ</h1>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<p>購入履歴</p>
+<p><%= purchase_data_log.created_at.strfttime('%y/%m') %></p>
+<table border="1" style="border-collapse: collapse">
+	<tr>
+		<td><%= purchase_data_log.created_at.strfttime('%y/%m/%d') %></td>
+		<td><%=  %></td>
+		<td><%=  %></td>
+		<td><%=  %></td>
+		<td><%= purchase_data_log.purchase_price %><br>
+			<%= purchase_data_log.numbers %></td>
+		<td><%=  %></td>
+	</tr>
+</table>
