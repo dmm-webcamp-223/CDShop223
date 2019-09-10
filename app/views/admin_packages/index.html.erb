@@ -4,11 +4,10 @@
 	</div>
     	<% @packages.each do |package| %>
     	<div class="row">
-      		<%= link_to package_path(packge.id) do%>
-        		<%= attachment_image_tag package, disc_image %>
+      		<%= link_to package_path(package.id) do%>
+        		<%= package.disc_image %>
       		<% end %>
-            <%= package.disc_stock %>
-        	<%= package.artist %>
+        	<%= package.artist.artist %>
         	<%= package.title %>
         	<%= package.price %>
     	<% end %>

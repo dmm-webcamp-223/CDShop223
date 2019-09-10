@@ -1,0 +1,46 @@
+<style>
+	.disc-box {
+		background: #dadada
+	}
+	li {
+		list-style: none;
+	}
+</style>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<ul>
+				<li><%= @package.disc_image %></li>
+				<li><%= @genre.category %></li>
+				<li><%= @package.price %></li>
+				<li><%= link_to "カートに追加する。", "#" %></li>
+				<li><%= @package.disc_status %></li>
+			</ul>
+		</div>
+		<div class="col-xs-8">
+			<ul>
+				<li><%= @package.title %></li>
+				<li><%= @artist.artist %></li>
+				<li><%= @label.label %></li>
+			</ul>
+			<table>
+				<!-- ディスク内のソングを繰り返し -->
+				<% @discs.each do |disc| %>
+				<tr>
+					<th>Disc.<%= disc.disc_number %></th>
+					<th>曲名</th>
+					<th>アーティスト名</th>
+				</tr>
+					<% disc.songs.each do |song| %>
+					<td><%= song.song_number%></td>
+					<td><%= song.song %></td>
+					<td><%= @artist.artist %></td>
+				</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
