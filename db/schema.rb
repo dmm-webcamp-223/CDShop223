@@ -1,4 +1,4 @@
-r# This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@ r# This file is auto-generated from the current state of the database. Instead
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_082159) do
+ActiveRecord::Schema.define(version: 2019_09_10_111226) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 2019_09_10_082159) do
     t.text "disc_image_id"
     t.integer "price"
     t.integer "disc_stock"
-    t.boolean "disc_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.boolean "disc_status", default: false, null: false
     t.index ["deleted_at"], name: "index_packages_on_deleted_at"
   end
 

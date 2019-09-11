@@ -16,7 +16,10 @@
         
           <% @artists.each do |a| %>
           <tr>
-              <td><%= a.artist %></td>
+              <td><%= link_to new_admin_package_path do %>
+                  <%= a.artist %>
+                  <% end %>
+              </td>
               <td><%= link_to "削除", artist_path(a.id), method: :delete %></td>
           </tr>
           <% end %>

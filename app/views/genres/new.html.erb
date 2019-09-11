@@ -16,11 +16,15 @@
         
           <% @genres.each do |a| %>
           <tr>
-              <td><%= a.category %></td>
+              <td><%= link_to new_admin_package_path do %>
+                  <%= a.category %>
+                  <% end %>
+              </td>
               <td><%= link_to "削除", genre_path(a.id), method: :delete %></td>
           </tr>
           <% end %>
       
       </table>
 </session>
+
 
