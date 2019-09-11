@@ -6,7 +6,6 @@ class PackagesController < ApplicationController
   def show
   	@package = Package.find(params[:id])
     @discs = Disc.all.includes(:songs)
-    @artists = Artist.all.includes(:songs)
   end
   
   def create
@@ -23,9 +22,4 @@ class PackagesController < ApplicationController
   def cart_params
       params.require(:cart).permit(:user_id)
   end
-
 end
-
-
-
-

@@ -1,3 +1,9 @@
+<style>
+</style>
+
+
+
+
 <div class="container">
 	<div id="container">
 		<div id="theTarget">
@@ -12,17 +18,15 @@
 		<h2>新着順</h2>
 	</div>
     	<% @packages.each do |package| %>
-    	<div class="row">
+    	<div class="row package">
       		<%= link_to package_path(package.id) do%>
-        		<%= package.disc_image %>
+        		<%= attachment_image_tag @package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
       		<% end %>
-        	<%= package.artist.artist %>
-        	<%= package.title %>
-        	<%= package.price %>
+        	<%= package.artist.artist %><br>
+        	<%= package.title %><br>
+        	<%= package.price %><strong>円</strong>
     	<% end %>
           <%= link_to "logout", destroy_user_session_path, method: :delete %>
     </div>
     <%= paginate @packages, class: "paginate" %>
 </div>
-
-
