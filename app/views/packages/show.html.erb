@@ -37,15 +37,15 @@
 				<li><strong>ジャンル</strong></li>
 				<li><%= @package.genre.category %></li>
 				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li>
-				<li><%= link_to "カートに追加する。", "#" %></li>
-				<!-- 販売状況の変化 -->
-				<li><% if  @package.disc_status? %>
-							<div class="sold">販売中</div>
-						<% else %>
-							<div class="soldout">販売停止中</div>
-						<% end %>
-				</li>
-				</li>
+				<li><%= link_to "カートに追加する。",   package_add_item_path(@package), method: :post %></li>
+				<li><%= @package.disc_status %></li>
+			</ul>
+		</div>
+		<div class="col-xs-8">
+			<ul>
+				<li><%= @package.title %></li>
+				<li><%= @package.artist.artist %></li>
+				<li><%= @package.label.label %></li>
 			</ul>
 		</div>
 <%= render 'packages/list', package: @packages, discs: @discs %>
