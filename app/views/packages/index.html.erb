@@ -20,6 +20,7 @@
         	<%= package.title %>
         	<%= package.price %>
     	<% end %>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
     </div>
     <%= paginate @packages, class: "paginate" %>
 </div>

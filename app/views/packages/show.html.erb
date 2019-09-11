@@ -25,7 +25,7 @@
 				<li><strong>ジャンル</strong></li>
 				<li><%= @package.genre.category %></li>
 				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li>
-				<li><%= link_to "カートに追加する。",  add_item_path, method: :post %></li>
+				<li><%= link_to "カートに追加する。",   package_add_item_path(@package), method: :post %></li>
 				<li><%= @package.disc_status %></li>
 			</ul>
 		</div>
