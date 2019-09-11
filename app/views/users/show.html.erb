@@ -1,4 +1,7 @@
 <h1>マイページ</h1>
+
+<% if @purchase_data_logs.present? %>
+<% @purchase_data_logs.each do |purchase_data_log| %>
 <p>購入履歴</p>
 <p><%= purchase_data_log.created_at.strfttime('%y/%m') %></p>
 <table border="1" style="border-collapse: collapse">
@@ -12,3 +15,8 @@
 		<td><%=  %></td>
 	</tr>
 </table>
+<% else %>
+
+<p>購入履歴は存在しません</p>
+<% end %>
+<% end %>

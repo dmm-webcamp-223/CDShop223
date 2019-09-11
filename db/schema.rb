@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_09_11_074755) do
+
+
+
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +23,12 @@ ActiveRecord::Schema.define(version: 2019_09_11_074755) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+
+    t.string "name_kanzi_sei"
+    t.string "name_kanzi_mei"
+    t.string "name_kana_sei"
+    t.string "name_kana_mei"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
