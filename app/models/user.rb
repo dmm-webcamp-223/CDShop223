@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :cart
+  has_many :recept_logs, dependent: :destroy
   acts_as_paranoid
 
   composed_of :fullname,
