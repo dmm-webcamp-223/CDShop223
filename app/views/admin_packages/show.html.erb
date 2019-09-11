@@ -1,33 +1,52 @@
+<style>
+	tbody {
+		border: 2px, #dadada;
+		padding-bottom: 20px;
+	}
+	li {
+		list-style: none;
+		padding: 0px 20px 0px 20px;
+
+	}
+	.image {
+		margin: 20px 0 20px 0;
+	}
+	th, td {
+		padding: 20px 20px 0px 20px;
+	}
+</style>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4">
-			<%= @package.disc_image %>
-		</div>
-		<div class="col-xs-2">
-			<%= @package.title %>
-			<%= @artist.artist %>
-			<%= @label.label %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4">
-			<%= @genre.category %>
-			<%= @package.price %>
-			<%= @package.disc_status %>
-			<%= @package.disc_stock %>
+			<ul>
+				<li class="image"><%= attachment_image_tag @package, :disc_image, :fill,200,200, fallback: "no_image.jpg" %></li>
+				<li><strong>ジャンル</strong></li>
+				<li><%= @package.genre.category %></li>
+				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li>
+				<li><%= link_to "カートに追加する。", "#" %></li>
+				<li><%= @package.disc_stock %></li>
+				<li><%= @package.disc_status %>
+			</ul>
 		</div>
 		<div class="col-xs-8">
-			<table>
+			<ul>
+				<li><%= @package.title %></li>
+				<li><%= @package.artist.artist %></li>
+				<li><%= @package.label.label %></li>
+			</ul>
+			<table class="table">
+				<% @discs.each do |disc| %>
 				<tr>
+					<th>Disc.<%= disc.disc_number %></th>
 					<th>曲名</th>
 					<th>アーティスト名</th>
 				</tr>
-				<% @discs.each do |disc| %>
-				<tr>
-					<p>Disc.<%= disc.disc_number %></p>
 					<% disc.songs.each do |song| %>
 					<td><%= song.song_number%></td>
 					<td><%= song.song %></td>
+					<!-- アーティスト名 -->
 				</tr>
 					<% end %>
 				<% end %>
