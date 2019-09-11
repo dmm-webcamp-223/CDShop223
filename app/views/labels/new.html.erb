@@ -16,11 +16,15 @@
         
           <% @labels.each do |a| %>
           <tr>
-              <td><%= a.label %></td>
+              <td><%= link_to new_admin_package_path do %>
+                  <%= a.label %>
+                  <% end %>
+              </td>
               <td><%= link_to "削除", label_path(a.id), method: :delete %></td>
           </tr>
           <% end %>
       
       </table>
 </session>
+
 
