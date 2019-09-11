@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2019_09_10_111226) do
+ActiveRecord::Schema.define(version: 2019_09_11_074755) do
+
+
+
 
 
   create_table "admins", force: :cascade do |t|
@@ -41,9 +44,10 @@ ActiveRecord::Schema.define(version: 2019_09_10_111226) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "package_id"
     t.integer "cart_id"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 0
+    t.string "default"
   end
 
   create_table "carts", force: :cascade do |t|

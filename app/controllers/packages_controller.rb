@@ -5,23 +5,25 @@ class PackagesController < ApplicationController
 
   def show
   	@package = Package.find(params[:id])
-<<<<<<< HEAD
+    @discs = Disc.all.includes(:songs)
+    @artists = Artist.all.includes(:songs)
   end
   
-
-
-
-=======
-    @discs = Disc.all.includes(:songs)
-  # @artists = Artist.all.includes(:songs)
-  end
-      private
-    def package_params
-        params.require(:package).permit(:title, :disc_image, :price, 
-          discs_attributes: [:id, :song, :_destroy, 
-            songs_attributes: [:id, :disc_number, :_destroy]])
+  def create
+    cart.user_id = current_user.id
+    @cart = Cart.new(cart_params)
+    if @cart.save!
+      redirect_to user_cart_path
+    else
+      render :show
     end
->>>>>>> 9e7bf532b10490fdd202666021d3fb5f802e1751
+  end
+  
+  private
+  def cart_params
+      params.require(:cart).permit(:user_id)
+  end
+
 end
 
 

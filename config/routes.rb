@@ -6,9 +6,12 @@ Rails.application.routes.draw do
       devise_for :users
 
   
-  resources :carts, only: [:show]
+
   resources :cart_items, only: [:create, :update, :destroy]
   resources :packages, only: [:index, :show]
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
+  delete '/delete_item' => 'carts#delete_item'
   resources :admin_packages
 
   
@@ -16,19 +19,19 @@ Rails.application.routes.draw do
   resources :labels, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :destroy]
   
- 
+  
   
   
 
   
-  resources :users, only: [:index, :edit, :update, :show, :destroy] do
-      resources :carts, only: [:show] do
+  resources :users, only: [:index, :edit, :update, :show, :destroy] 
+      resources :carts, only: [:show] 
          resources :cart_items, only: [:create, :update, :destroy] 
          get 'purchase_page' => 'cart_items#purchase_page'
          get 'purchase_check' => 'cart_items#purchase_check'
          get 'purchase_confirmation' => 'cart_items#purchase_confirmation'
-      end
-  end
+
+  
     
   
 
