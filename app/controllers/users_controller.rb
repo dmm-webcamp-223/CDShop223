@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @recept_logs = @user.recept_logs
+    @user = current_user
+    @purchase_data_logs = Purchase_data_log.all
 #    @recept_logs = Recept_log.all.includes(:purchase_data_log)
 #    @purchase_data_logs = @recept_log.purchase_data_logs
   end

@@ -1,22 +1,23 @@
 <h1>マイページ</h1>
 
-<% if @purchase_data_logs.present? %>
-<% @purchase_data_logs.each do |purchase_data_log| %>
+<% if @user.recept_logs.empty? %>
+<p>購入履歴は存在しません</p>
+
+<% else %>
+<% @purchase_data_logs.each do |p| %>
 <p>購入履歴</p>
-<p><%= purchase_data_log.created_at.strfttime('%y/%m') %></p>
+<p><%= p.created_at.to_s(:datetime) %></p>
 <table border="1" style="border-collapse: collapse">
 	<tr>
-		<td><%= purchase_data_log.created_at.strfttime('%y/%m/%d') %></td>
-		<td><%=  %></td>
-		<td><%=  %></td>
-		<td><%=  %></td>
-		<td><%= purchase_data_log.purchase_price %><br>
-			<%= purchase_data_log.numbers %></td>
-		<td><%=  %></td>
+		<td><%= u.recept_logs.created_at.to_s(:datetime) %></td>
+		<td><%= u. %></td>
+		<td><%= u. %></td>
+		<td><%= u. %></td>
+		<td><%= u.recept_logs.purchase_data_logs.numbers %><br>
+			<%= u.recept_logs.derivering_address %></td>
+		<td><%= u.recept_logs.derivered_status %></td>
 	</tr>
 </table>
-<% else %>
 
-<p>購入履歴は存在しません</p>
 <% end %>
 <% end %>
