@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CDShop 223</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>CDShop 223</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <div class="nav navbar-inverse">
-      <div class="container">
-        <span>Shop 223</span>
+<body>
+  <div class="nav navbar-inverse">
+    <div class="container">
+      <span>Shop 223</span>
 
-       <% if admin_signed_in? %>
-       <nav class="nav navbar-nav navbar-left">
+      <% if admin_signed_in? %>
+      <nav class="nav navbar-nav navbar-left">
         <li>管理者でログインしています</li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
-       </nav>
-       <% elsif user_signed_in? %>
-       <nav  class="nav navbar-nav navbar-left" >
-         <li>でログインしています</li>
-         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
-       </nav>
-       <% else %>
-       <nav class="nav navbar-nav navbar-left">
-        <li>ゲスト</li>
-       </nav>
-       <% end %>
+      </nav>
+      <% elsif user_signed_in? %>
+      <nav  class="nav navbar-nav navbar-left" >
+       <li>でログインしています</li>
+       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
+     </nav>
+     <% else %>
+     <nav class="nav navbar-nav navbar-left">
+      <li>ゲスト</li>
+    </nav>
+    <% end %>
 
-       <% if admin_signed_in? %>
-       <nav class="nav navbar-nav navbar-right">
-        <li><%= link_to "CDの新規追加", new_admin_package_path %></li>
-        <li><%= link_to "管理者トップ", admin_packages_path %></li>
-        <li><%= link_to "発注フォーム", ship_data_logs_path %></li>
-        <li><%= link_to "ユーザー一覧", admin_users_psth %></li>
-        <li><%= link_to "入荷履歴", ship_data_logs_path %></li>
-        <li><%= form_tag(packages_path, :method => 'get') do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag 'Search', :name => nil %>
-          <% end %>
-        </li>
-       </nav>
-       <% elsif user_signed_in? %>
-       <nav  class="nav navbar-nav navbar-right" >
-        <li><%= link_to "TOP", root_path %></li>
-        <li><%= link_to "カート", packages_path(current_user.id) %></li>
-        <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-        <li><%= form_tag(packages_path, :method => 'get') do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag 'Search', :name => nil %>
-          <% end %>
-        </li>
-       </nav>
-       <% else %>
-       <nav class="nav navbar-nav navbar-right">
-        <li><%= link_to "TOP", root_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
-        <li><%= form_tag(packages_path, :method => 'get') do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag 'Search', :name => nil %>
-          <% end %>
-        </li>
-       </nav>
-       <% end %>
+    <% if admin_signed_in? %>
+    <nav class="nav navbar-nav navbar-right">
+      <li><%= link_to "CDの新規追加", new_admin_package_path %></li>
+      <li><%= link_to "管理者トップ", admin_packages_path %></li>
+      <li><%= link_to "発注フォーム", ship_data_logs_path %></li>
+      <li><%= link_to "ユーザー一覧", admin_users_psth %></li>
+      <li><%= link_to "入荷履歴", ship_data_logs_path %></li>
+      <li><%= form_tag(packages_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </li>
+    </nav>
+    <% elsif user_signed_in? %>
+    <nav  class="nav navbar-nav navbar-right" >
+      <li><%= link_to "TOP", root_path %></li>
+      <li><%= link_to "カート", packages_path(current_user.id) %></li>
+      <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+      <li><%= form_tag(packages_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </li>
+    </nav>
+    <% else %>
+    <nav class="nav navbar-nav navbar-right">
+      <li><%= link_to "TOP", root_path %></li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <li><%= form_tag(packages_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </li>
+    </nav>
+    <% end %>
 
+  </div>
+</div>
+<%= yield %>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3 col-xs-offset-9">
+        <p class="text-right">CopyRight Infratop.inc</p>
       </div>
     </div>
-    <%= yield %>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-3 col-xs-offset-9">
-            <p class="text-right">CopyRight Infratop.inc</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
+  </div>
+</footer>
+</body>
 </html>
