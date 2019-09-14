@@ -12,4 +12,10 @@ class Package < ApplicationRecord
   attachment :disc_image
   acts_as_paranoid
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
+
+  def self.serch(search)
+    return Package.all unless search
+    Package.where(["title LIKE ?", "%#{search}%"])
+  end
+
 end
