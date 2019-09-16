@@ -1,0 +1,59 @@
+<div class="purchase_page">
+  <%= form_with model: @recept_log, url: user_cart_recept_logs_path(current_user.id,current_cart.id), method: :post, local: true do |form| %>
+    <h1>商品購入ページ</h1>
+        <div class="order_address">
+              <h4>発送住所の選択</h4>
+                  <div class="registered_add">
+                       <h4>郵便番号</h4>
+                          <%= @user.postal_code %>
+                       <h4>住所</h4>
+                          <%= @user.address %>
+                  </div>
+        </div>
+  
+        <div class="another_address">
+              <h4>別の住所を使う</h4>
+                <%= link_to "住所を登録", new_user_cart_purchase_page_path(current_user.id,current_cart.id) %>
+        
+           
+              <h4>郵便番号</h4>
+                  <%= form.select :postal_code, options_from_collection_for_select(@ship_address, :postal_code, :postal_code) %>
+              <h4>住所</h4>
+                  <%= form.select :delivering_adddress, options_from_collection_for_select(@ship_address, :shipping_add, :shipping_add) %>
+        </div>
+  
+        <div class="item">
+            <% @cart_items.each do |f| %>
+                <h4>商品名</h4>
+                    <%= f.package.title %>
+                <h4>商品の個数</h4>
+                    <%= f.quantity %>
+                <h4>税込価格</h4>
+                    <%= f.total_cost*1.08 %>
+            <% end %>
+        </div>
+  
+        <div class="how_to_pay">
+            <h2>支払い方法の選択</h2>
+                <h4>銀行振込</h4>
+                <h4>クレジットカード</h4>
+                <h4>代引き</h4>
+        </div>
+  
+        <div class="payment">
+            <h2>請求額</h2>
+                <h4>商品代金</h4>
+                    <%= @cart_items.sum(:total_cost) %>
+                <h4>送料</h4>
+                    <p>500円</p>
+                <h4>合計税込</h4>
+                    <%= @cart_items.sum(:total_cost)*1.08+500 %>
+                     
+        </div>
+  
+        <div class="order_confirm">
+      <%= form.submit %>
+  <% end %>
+        </div>
+
+</div>

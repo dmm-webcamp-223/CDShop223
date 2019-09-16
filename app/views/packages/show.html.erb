@@ -21,7 +21,7 @@
 	<div class="row">
 		<div class="col-xs-4">
 			<ul>
-				<li class="image"><%= @package.disc_image %></li>
+				<li class="image"><%= attachment_image_tag @package, :disc_image, :fill,200,200 %></li>
 				<li><strong>ジャンル</strong></li>
 				<li><%= @package.genre.category %></li>
 				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li>

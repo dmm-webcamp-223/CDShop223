@@ -1,0 +1,2 @@
+module ShipAdressesHelper
+end
