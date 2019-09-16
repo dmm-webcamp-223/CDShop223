@@ -1,22 +1,27 @@
 <h1>マイページ</h1>
+<%= link_to "ユーザー編集", edit_user_registration_path %>
+<hr>
+<% if flash[:notice] %>
+<p><%= flash[:notice]%></p>
+<% end %>
+<% if @recept_log.nil? %>
+<p>購入履歴は存在しません</p>
 
-<% if @purchase_data_logs.present? %>
-<% @purchase_data_logs.each do |purchase_data_log| %>
+<% else %>
+<% @recept_log.purchase_data_logs.each do |purchase| %>
 <p>購入履歴</p>
-<p><%= purchase_data_log.created_at.strfttime('%y/%m') %></p>
+<p><%= p.created_at.to_s(:datetime) %></p>
 <table border="1" style="border-collapse: collapse">
 	<tr>
-		<td><%= purchase_data_log.created_at.strfttime('%y/%m/%d') %></td>
-		<td><%=  %></td>
-		<td><%=  %></td>
-		<td><%=  %></td>
-		<td><%= purchase_data_log.purchase_price %><br>
-			<%= purchase_data_log.numbers %></td>
-		<td><%=  %></td>
+		<td><%= purchase.recept_logs.created_at.to_s(:datetime) %></td>
+		<td><%= purchase.disc_image %></td>
+		<td><%= purchase.title %></td>
+		<td><%= purchase.recept_logs.purchase_data_logs.numbers %><br>
+			<%= purchase.recept_log.total %></td>
+		<td><%= purchase.recept_logs.derivering_address %></td>
+		<td><%= purchase.recept_logs.derivered_status %></td>
 	</tr>
 </table>
-<% else %>
-
-<p>購入履歴は存在しません</p>
 <% end %>
+
 <% end %>

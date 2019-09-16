@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-  #カートの作成
   protect_from_forgery with: :exception
 
   helper_method :current_cart
@@ -13,6 +11,11 @@ class ApplicationController < ActionController::Base
     else
       @cart = Cart.create(user_id: current_user.id)
     end
+  end
+
+  def search
+    @users = User.search(params[:search])
+    @packages = Package.search(params[:search])
   end
 
   protected
