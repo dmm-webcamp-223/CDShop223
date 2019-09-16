@@ -5,9 +5,10 @@ class PackagesController < ApplicationController
 
   def show
   	@package = Package.find(params[:id])
-    @discs = Disc.all.includes(:songs)
+    @package.price = @package.price + @package.price * 0.08
+    @discs = @package.discs.all
   end
-  
+
   def create
     cart.user_id = current_user.id
     @cart = Cart.new(cart_params)
@@ -17,7 +18,7 @@ class PackagesController < ApplicationController
       render :show
     end
   end
-  
+
   private
   def cart_params
       params.require(:cart).permit(:user_id)

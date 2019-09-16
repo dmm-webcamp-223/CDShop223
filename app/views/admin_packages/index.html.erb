@@ -1,16 +1,26 @@
+<style>
+	.col-xs-2 {
+		margin-bottom:30px;
+		text-aline:center;
+	}
+</style>
+
 <div class="container">
 	<div class="row">
 		<h2>新着順</h2>
+    	<% @packages.each do |package| %>
+    		<div class="col-xs-2">
+      		<%= link_to admin_package_path(package.id) do %>
+					<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
+      		<% end %>
+        	<%= package.artist.artist %><br>
+        	<%= package.title %><br>
+        	<%= package.price %><strong> 円</strong><br>
+				</div>
+    	<% end %>
+			<div class="col-xs-7 col-xs-offset-5">
+    		<%= paginate @packages, class: "paginate" %>
+			</div>
 	</div>
-   <% @packages.each do |package| %>
-   <div class="row">
-    <%= link_to package_path(package.id) do %>
-    <%= attachment_image_tag @package, :disc_image, :fill,200,200, fallback: "no_imag.jpg" %>
-    <% end %>
-    <%= package.artist.artist %>
-    <%= package.title %>
-    <%= package.price %>
-    <% end %>
-</div>
-<%= paginate @packages, class: "paginate" %>
+
 </div>

@@ -1,4 +1,8 @@
 <style>
+.row package {
+	display:inline-block;
+}
+
 </style>
 
 
@@ -16,17 +20,23 @@
 	</div>
 	<div class="row">
 		<h2>新着順</h2>
-	</div>
-    	<% @packages.each do |package| %>
-    	<div class="row package">
-      		<%= link_to package_path(package.id) do%>
-        		<%= attachment_image_tag @package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
-      		<% end %>
-        	<%= package.artist.artist %><br>
-        	<%= package.title %><br>
-        	<%= package.price %><strong>円</strong>
-    	<% end %>
-          <%= link_to "logout", destroy_user_session_path, method: :delete %>
-    </div>
-    <%= paginate @packages, class: "paginate" %>
+	    	<% @packages.each do |package| %>
+	    		<div class="col-xs-2">
+	      		<%= link_to package_path(package.id) do%>
+	        		<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
+	      		<% end %>
+						<% if package.disc_stock == 0 %>
+							<span class="label label-danger">売り切れ</span><br>
+						<% else %>
+						<br>
+						<% end %>
+	        	<%= package.artist.artist %><br>
+	        	<%= package.title %><br>
+	        	<%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
+	    		</div>
+				<% end %>
+				<div class="col-xs-7 col-xs-offset-5">
+    			<%= paginate @packages, class: "paginate" %>
+				</div>
+		</div>
 </div>

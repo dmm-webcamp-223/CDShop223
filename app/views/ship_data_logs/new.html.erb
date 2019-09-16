@@ -1,0 +1,25 @@
+<style>
+  .new_ship_data_log {
+    padding: 50px 30px 0 0;
+  }
+</style>
+<div class="container" >
+  <div class="row">
+    <h1>発注フォーム</h1>
+    <%= form_for(@logs) do |f| %>
+    <table>
+      <tr>
+        <th>商品名</th>
+        <th>個数</th>
+        <th>発注先</th>
+      </tr>
+      <tr>
+        <td><%= f.collection_select(:package_id, Package.all, :id, :title) %></td>
+        <td><%= f.number_field :ship_number %></td>
+        <td><%= f.text_field :supplier %></td>
+        <td><%= f.submit "確定" %></td>
+      </tr>
+    </table>
+      <% end %>
+  </div>
+</div>

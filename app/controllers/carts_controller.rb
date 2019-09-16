@@ -10,7 +10,7 @@ class CartsController < ApplicationController
       @cart_item = current_cart.cart_items.build(package_id: params[:package_id])
     end
 
-    @cart_item.quantity += params[:quantity].to_i
+    @cart_item.quantity += 1
     @cart_item.save
     redirect_to current_cart
   end
@@ -28,8 +28,6 @@ class CartsController < ApplicationController
   end
 
   private
-
-
   def setup_cart_item!
     @cart_item = current_cart.cart_items.find_by(package_id: params[:package_id])
   end

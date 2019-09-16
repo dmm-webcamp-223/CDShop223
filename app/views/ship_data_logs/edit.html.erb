@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <%= form_for(@log) do |f| %>
+    <table>
+      <tr>
+        <th>商品名</th>
+        <th>入荷枚数</th>
+      </tr>
+      <tr>
+        <td><%= @log.package.title %></td>
+        <td><%= f.number_field :shiped_number %></td>
+        <td><%= f.submit "確定" %></td>
+      </tr>
+    </table>
+      <% end %>
+  </div>
+</div>
