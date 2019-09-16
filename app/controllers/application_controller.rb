@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
-  
-  #カートの作成 
+
+  #カートの作成
   protect_from_forgery with: :exception
 
   helper_method :current_cart
