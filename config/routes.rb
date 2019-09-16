@@ -32,7 +32,7 @@ end
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
      resources :carts, only: [:show, :create] do
        resources :recept_logs, only: [:create]
-      #resources :purchase_data_logs, only: [:create] 
+       resource :purchase_pages, only: [:update]
        resources :purchase_pages, only: [:show, :new, :create] do
              collection do
                get :purchase_check 

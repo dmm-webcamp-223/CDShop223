@@ -31,5 +31,9 @@
                     <%= @cart_items.sum(:total_cost)*1.08 %>
         </div>
   
+        <div class="confirm">
+            <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch  %>
+        </div>
+  
         
 </div>
