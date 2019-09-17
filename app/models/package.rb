@@ -13,10 +13,12 @@ class Package < ApplicationRecord
   acts_as_paranoid
   accepts_nested_attributes_for :discs, allow_destroy: true
 
-
   def self.serch(search)
-    return Package.all unless search
-    Package.where(["title LIKE ?", "%#{search}%"])
+    if search
+      where(["title LIKE ?", "%#{search}%"])
+    else
+      all
+    end
   end
 
 end
