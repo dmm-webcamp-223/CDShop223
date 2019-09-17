@@ -29,15 +29,22 @@ Rails.application.routes.draw do
 
   resources :ship_adresses, only: [:create]
 
+  
+  resources :order_logs, only: [:index]
+
+
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
-   resources :carts, only: [:show, :create] do
-     resources :recept_logs, only: [:create]
-     resource :purchase_pages, only: [:update]
-     resources :purchase_pages, only: [:show, :new, :create] do
-       collection do
-        get :purchase_check
-         get :purchase_confirmation
-       end
+
+     resources :carts, only: [:show, :create] do
+       resources :recept_logs, only: [:create]
+       resource :purchase_pages, only: [:update, :destroy]
+       resources :purchase_pages, only: [:show, :new, :create] do
+             collection do
+               get :purchase_check 
+               get :purchase_confirmation               
+            end
+        end
+
      end
    end
  end

@@ -1,37 +1,33 @@
 
 
 
-<div class="cart_items clearfix">
-  <h1>カート</h1>
-    <% @cart_items.each do |c| %>
-        <div class="disc_image">
-            <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
-        </div>
-        <div class="line clearfix">
-        </div>
-
-        <div class="package_name">
-            <%= c.package.title %>
-        </div>
-
-        <div class="buy_number">
-            <%= form_for(@cart_number, url: package_update_item_path(c.package.id)) do |f| %>
-            <h4>数量を入力</h4>
-                <%= f.number_field :quantity %>
-                <%= f.submit '確定'%>
-                <%= c.quantity %>
-            <% end %>
-        </div>
-
-        <div class="price">
-            <%= c.package.price %>
-        </div>
+<div class="container">
+    <div class="row cart clearfix">
+        <h1>カート</h1>
+              <% @cart_items.each do |c| %>
+                  <div class="image col-lg-8">
+                      <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
+                  </div>
+                  <div class="package_name col-lg-2 col-lg-offset-1">
+                        <%= c.package.title %>
+                            <%= form_for(@cart_number, url: package_update_item_path(c.package.id)) do |f| %>
+                              <h4>数量を入力</h4>
+                                  <%= f.number_field :quantity %>
+                                  <%= f.submit '確定'%>
+                                  <%= c.quantity %>
+                            <% end %>
+                            <div class="price">
+                                  <%= c.package.price %>
+                            </div>
+                  </div>
+                  <div class="delete col-lg-1 col-lg-offset-1">
+                        <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete %> 
+                  </div>
+                  <div class="col-lg-offset-2"></div>
+              <% end %>
+     </div>
   
-        <div class="delete">
-            <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete %> 
-        </div>
-      
-    <% end %>
+</div>
   
     <div class="total_packages">
       <p>購入する商品は</p>
@@ -48,4 +44,4 @@
   
       
 
-</div>
+

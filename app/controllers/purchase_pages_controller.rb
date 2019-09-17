@@ -4,6 +4,7 @@ class PurchasePagesController < ApplicationController
       @ship_address=ShipAdress.where(user_id: params[:user_id])
       @cart_items = CartItem.where(cart_id: params[:cart_id])
       @recept_log = ReceptLog.new
+      @how_to_pay = HowToPay.new
   end
   
   def purchase_check
@@ -44,11 +45,24 @@ class PurchasePagesController < ApplicationController
             @purchase_data_log.numbers=f.quantity
             @purchase_data_log.save!
           end
+      
+        @cart_items.each do |f|
+            f.package.disc_stock=f.package.disc_stock-f.quantity
+            f.package.save!
+        end
+        
      
      @cart_items.delete_all
      redirect_to purchase_confirmation_user_cart_purchase_pages_path(current_user.id,current_cart.id)
      
       
+   end
+  
+   def destroy
+     @recept_log = ReceptLog.order('id DESC').find_by(user_id: params[:user_id])
+     @recept_log.delete
+     
+     redirect_to user_cart_purchase_page_path(current_user.id, current_cart.id,current_cart.id)
    end
   
 
