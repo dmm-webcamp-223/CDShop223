@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :admin_packages
 
+  resources :admin_users
+
   resources :artists, only: [:new, :create, :destroy]
   resources :labels, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :destroy]

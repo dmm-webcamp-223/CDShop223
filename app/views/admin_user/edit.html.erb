@@ -55,7 +55,6 @@
           <p>新しいパスワード</p> <i>(leave blank if you don't want to change it)</i>
           <%= f.password_field :password, autocomplete: "new-password" %>
           <% if @minimum_password_length %>
-          
           <em><%= @minimum_password_length %> characters minimum</em>
           <% end %>
         </div>

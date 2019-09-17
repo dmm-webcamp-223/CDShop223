@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   def edit
-  end
-
-  def index
+    @user = User.find(params[:id])
   end
 
   def update
-  end
-
-  def destroy
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: "You have updated successfully."
+    else
+      render action: :edit
+    end
   end
 
   def show
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name_kanzi_sei, :name_kanzi_mei, :name_kana_sei)
+    params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)
   end
 
   def recept_log_params
