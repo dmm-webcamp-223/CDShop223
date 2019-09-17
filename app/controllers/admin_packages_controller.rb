@@ -5,7 +5,7 @@ class AdminPackagesController < ApplicationController
       @genres = Genre.all
       @package = Package.new
       @disc = @package.discs.build
-      @song = @disc.songs.build 
+      @song = @disc.songs.build
     end
 
 	def index
@@ -14,31 +14,43 @@ class AdminPackagesController < ApplicationController
 
 	def show
   	  @package = Package.find(params[:id])
-      @discs = Disc.all.includes(:songs)
+      @discs = @package.discs.all
 	end
 
-    def create
+
+  def create
       @package = Package.new(package_params)
       if  @package.save!
           redirect_to admin_packages_path
-      else 
+      else
           render :new
       end
-    end
+  end
 
-	def updater
+	def update
+    @package = Package.find(params[:id])
+     if @package.update(package_params)
+     redirect_to package_path(@package.id), notice:'You have updated book successfully.'
+    else
+     render :edit
+   end
 	end
 
 	def edit
+    @package = Package.find(params[:id])
+    @discs = @package.discs.all
+    @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
 	end
 
 	def destory
 	end
-  
+
     private
     def package_params
         params.require(:package).permit(:title, :disc_image, :price, :disc_stock, :artist_id, :genre_id, :label_id,
-          discs_attributes: [:id, :disc_number, :_destroy, 
+          discs_attributes: [:id, :disc_number, :_destroy,
             songs_attributes: [:id, :song, :song_number, :_destroy]])
     end
 end

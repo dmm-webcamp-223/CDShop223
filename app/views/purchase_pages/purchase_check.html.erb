@@ -1,0 +1,39 @@
+<div class="order_comfirmation">
+    <h1>注文内容の確認</h1>
+        <div class="your_order_add">
+            <h2>お届け先</h2>
+                <h3>住所</h3>
+                    <%= @recept_log.delivering_adddress %>
+                <h3>郵便番号</h3>
+                    <%= @recept_log.postal_code %>             
+        </div>
+  
+        <div class="your_order_item">
+            <h2>商品内容</h2>
+                <% @cart_items.each do |f| %>
+                <h3>商品名</h3>
+                    <%= f.package.title %>
+                <h3>個数</h3>
+                    <%= f.quantity %>
+                <h3>価格</h3>
+                    <%= f.package.price %>
+                <% end %>
+        </div>
+
+  
+        <div class="total_cost" >
+            <h2>合計金額</h2>
+                <h3>商品代金</h3>
+                    <%= @cart_items.sum(:total_cost) %>
+                <h3>送料</h3>
+                    <p>500円</p> 
+                <h3>税込合計額</h3>
+                    <%= @cart_items.sum(:total_cost)*1.08 %>
+        </div>
+  
+        <div class="confirm">
+            <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch  %>
+        </div>
+  
+        
+</div>

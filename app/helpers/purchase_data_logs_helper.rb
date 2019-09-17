@@ -1,0 +1,2 @@
+module PurchaseDataLogsHelper
+end

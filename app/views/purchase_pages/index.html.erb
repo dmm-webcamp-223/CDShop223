@@ -1,0 +1,9 @@
+<div class="another_add">
+    <%= form_for(@ship_address, url: ship_adresses_path) do |f| %>
+        <h4>郵便番号</h4>
+             <%= f.number_field :postal_code %>
+         <h4>住所</h4>
+             <%= f.text_field :shipping_add %>
+         <%= f.submit '確定' %>
+    <% end %>
+</div>
