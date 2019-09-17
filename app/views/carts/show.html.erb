@@ -1,0 +1,51 @@
+
+
+
+<div class="cart_items clearfix">
+  <h1>カート</h1>
+    <% @cart_items.each do |c| %>
+        <div class="disc_image">
+            <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
+        </div>
+        <div class="line clearfix">
+        </div>
+
+        <div class="package_name">
+            <%= c.package.title %>
+        </div>
+
+        <div class="buy_number">
+            <%= form_for(@cart_number, url: package_update_item_path(c.package.id)) do |f| %>
+            <h4>数量を入力</h4>
+                <%= f.number_field :quantity %>
+                <%= f.submit '確定'%>
+                <%= c.quantity %>
+            <% end %>
+        </div>
+
+        <div class="price">
+            <%= c.package.price %>
+        </div>
+  
+        <div class="delete">
+            <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete %> 
+        </div>
+      
+    <% end %>
+  
+    <div class="total_packages">
+      <p>購入する商品は</p>
+      <%= current_cart.cart_items.count %>品
+    </div>
+  
+    <div class="total_cost">
+      <%= current_cart.cart_items.sum(:total_cost) %>
+    </div>
+  
+    <div class="link_to_buy">
+       <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id) %>
+    </div>
+  
+      
+
+</div>

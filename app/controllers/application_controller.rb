@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     @packages = Package.search(params[:search])
   end
 
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number])
