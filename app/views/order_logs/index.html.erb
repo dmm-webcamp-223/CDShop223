@@ -1,0 +1,28 @@
+<div class="container" >
+  <div class="row">
+      <table class="table">
+        <thead>
+              <tr>
+                    <th>名前</th>
+                    <th>郵便番号</th>
+                    <th>住所</th>
+                    <th>配送状況</th>
+                    <th>日付</th>
+              </tr>
+        </thead>
+              <% @recept_logs.each do |f| %>
+              <tr>
+                    <th><%= f.user.name_kanzi_sei %></th>
+                    <th><%= f.postal_code %> </th>
+                    <th><%= f.delivering_adddress %></th>
+                    <th><%= f.delivered_status %></th>
+                    <th><%= f.created_at %></th>  
+              </tr>
+              <% end %>
+      </div>
+    
+    </div>
+  
+  </div>
+
+</div>

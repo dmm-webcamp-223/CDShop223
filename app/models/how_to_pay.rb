@@ -1,0 +1,2 @@
+class HowToPay < ApplicationRecord
+end
