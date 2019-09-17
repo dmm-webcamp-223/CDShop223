@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   end
 
 
+
+  resources :admin_users
+
   resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
+
   resources :artists, only: [:new, :create, :destroy]
   resources :labels, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :destroy]

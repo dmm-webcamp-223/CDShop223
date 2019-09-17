@@ -7,11 +7,18 @@ class User < ApplicationRecord
   has_many :recept_logs, dependent: :destroy
   acts_as_paranoid
 
-  composed_of :fullname,
+  composed_of :kanzi_fullname,
   :class_name => "FullName",
   :mapping => [
     [:name_kanzi_sei, :family_name],
     [:name_kanzi_mei, :given_name]
+  ]
+
+  composed_of :kana_fullname,
+  :class_name => "FullName",
+  :mapping => [
+    [:name_kana_sei, :family_name],
+    [:name_kana_mei, :given_name]
   ]
 end
 
