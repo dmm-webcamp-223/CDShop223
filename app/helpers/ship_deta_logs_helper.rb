@@ -1,0 +1,2 @@
+module ShipDetaLogsHelper
+end

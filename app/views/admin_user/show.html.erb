@@ -1,0 +1,23 @@
+<h2>ユーザー詳細</h2>
+
+<% if @recept_logs.empty? %>
+<p>購入履歴は存在しません</p>
+
+<% else %>
+<% @purchase_data_logs.each do |p| %>
+<p>購入履歴</p>
+<p><%= p.created_at.to_s(:datetime) %></p>
+<table border="1" style="border-collapse: collapse">
+	<tr>
+		<td><%= p.recept_logs.created_at.to_s(:datetime) %></td>
+		<td><%= p.disc_image %></td>
+		<td><%= p.title %></td>
+		<td><%= p.recept_logs.purchase_data_logs.numbers %><br>
+			<%= p.recept_log.total %></td>
+		<td><%= p.recept_logs.derivering_address %></td>
+		<td><%= p.recept_logs.derivered_status %></td>
+	</tr>
+</table>
+
+<% end %>
+<% end %>

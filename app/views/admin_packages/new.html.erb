@@ -2,9 +2,8 @@
     <h1>新規商品の追加</h1>
         <div class = "row">
             <div class = "col-lg-3" >
-      
-                  <%= form_for(@package, url: '/admin_packages') do |f| %>
-                    <div class="left-field">
+
+                   <%= form_for(@package, url: '/admin_packages') do |f| %>|f| %>
                         <h4>アーティストを選ぶ</h4>
                         <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %>
                         <h4>レーベルを選ぶ</h4>
@@ -17,23 +16,17 @@
                         <%= f.number_field :price %>
                         <h4>ジャケット画像</h4>
                         <%= f.attachment_field :disc_image %>
-                    </div>
+                        <div class="package">
+                                <%= f.fields_for :discs do |t| %>
+                            <%= render "disc_fields", f: t %>
+                        <% end %>
+                          <div class = "disc-links">
+                              <%= link_to_add_association "ディスクを追加", f, :discs %>
+                          </div>
+                        </div>
+                        <div class="actions">
+                          <%= f.submit 'Save'%>
+                        </div>
+                  <% end %>
             </div>
-            
-           
-                <div id = 'discs'>
-                    <%= f.fields_for :discs do |t| %>
-                        <%= render "disc_fields", f: t %>
-                    <% end %>
-            
-                      <div class = "disc-links">
-                          <%= link_to_add_association "ディスクを追加", f, :discs %>
-                      </div>
-                </div>  
-          
-  
-              <%= f.submit 'Save'%>
-              <% end %>
-  
-          </div>  
-</div>
+        </div>

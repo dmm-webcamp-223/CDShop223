@@ -1,0 +1,45 @@
+<style>
+  .th {
+    padding: 30px, 20px, 0px, 0px;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <% @logs.each do |log| %>
+      <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>商品名</th>
+            <th>発注日</th>
+            <th>発注枚数</th>
+            <th>発注先</th>
+            <th>入荷日</th>
+            <th>入荷枚数</th>
+            <th>入荷状況</th>
+          </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td><%= log.package.title %></td>
+          <td><%= log.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= log.ship_number %></td>
+          <td><%= log.supplier %></td>
+          <% if log.updated_at == log.created_at %>
+            <td>未入荷</td>
+          <% else %>
+            <td><%= log.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <% end %>
+            <%= form_for log, url: ship_data_log_path(log) do |f| %>
+              <td><%= f.number_field :shiped_number %></td>
+          <% if log.arrival_status? %>
+                <td> 入荷済　</td>
+          <% else %>
+                <td><%= f.submit "更新" %></td>
+                <% end %>
+          <% end %>
+        </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

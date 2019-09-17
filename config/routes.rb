@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
 
-  
-      devise_for :admins
-
-      devise_for :users
-
-  
-resources :packages, only: [:index, :show] do
-    resources :cart_items, only: [:create, :update, :destroy]
-      post '/add_item' => 'carts#add_item'
-      post '/update_item' => 'carts#update_item'
-      delete '/delete_item' => 'carts#delete_item'
-end
-
-
-
+  devise_for :admins, :controllers => {
+    :registrations => 'admins/registrations',
+    :sessions => 'admins/sessions'
+  }
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
   resources :admin_packages
+  resources :packages, only: [:index, :show] do
+    resources :cart_items, only: [:create, :update, :destroy]
+    post '/add_item' => 'carts#add_item'
+    post '/update_item' => 'carts#update_item'
+    delete '/delete_item' => 'carts#delete_item'
+  end
 
-  
+
+  resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
   resources :artists, only: [:new, :create, :destroy]
   resources :labels, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :destroy]
+
 
   resources :ship_adresses, only: [:create]
   
@@ -43,21 +44,8 @@ end
   end
   
 
-
-  
-    
-  
-
-  
   root 'packages#index'
-  
 
-  
-  
-  
-        
-    
+  	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
 
-
-  	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm
-end

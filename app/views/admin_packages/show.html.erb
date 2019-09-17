@@ -5,8 +5,13 @@
 	}
 	li {
 		list-style: none;
-		padding: 0px 20px 0px 20px;
-
+		padding: 0px 5px 0px 20px;
+		text-align: center;
+	}
+	.tiarla {
+		float: left;
+		text-align: left;
+		margin: 50px 0 50px 0;
 	}
 	.image {
 		margin: 20px 0 20px 0;
@@ -14,43 +19,35 @@
 	th, td {
 		padding: 20px 20px 0px 20px;
 	}
+	.sold{
+		color: green;
+	}
+	.soldout{
+		color: red;
+	}
 </style>
+
 
 
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4">
 			<ul>
-				<li class="image"><%= attachment_image_tag @package, :disc_image, :fill,200,200, fallback: "no_image.jpg" %></li>
+				<li class="image"><%= attachment_image_tag @package, :disc_image, size:"200x200", fallback: "no_image.jpg" %></li>
 				<li><strong>ジャンル</strong></li>
-				<li><%= @package.genre.category %></li>
-				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li>
-				<li><%= link_to "カートに追加する。", "#" %></li>
-				<li><%= @package.disc_stock %></li>
-				<li><%= @package.disc_status %>
+				<li><%= @package.genre.category %></li><br>
+				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li><br>
+				<!-- 販売状況の変化 -->
+					<li><% if  @package.disc_status %>
+							  <div class="sold">販売中</div>
+							<% else %>
+								<div class="soldout">販売停止中</div><br>
+							<% end %>
+					</li>
+					<li><strong>在庫数　<strong><%= @package.disc_stock %></li><br>
+					<li><%= link_to "編集", edit_admin_package_path(@package) %><li>
 			</ul>
 		</div>
-		<div class="col-xs-8">
-			<ul>
-				<li><%= @package.title %></li>
-				<li><%= @package.artist.artist %></li>
-				<li><%= @package.label.label %></li>
-			</ul>
-			<table class="table">
-				<% @discs.each do |disc| %>
-				<tr>
-					<th>Disc.<%= disc.disc_number %></th>
-					<th>曲名</th>
-					<th>アーティスト名</th>
-				</tr>
-					<% disc.songs.each do |song| %>
-					<td><%= song.song_number%></td>
-					<td><%= song.song %></td>
-					<!-- アーティスト名 -->
-				</tr>
-					<% end %>
-				<% end %>
-			</table>
-		</div>
+  <%= render 'packages/list', package: @packages, discs: @discs %>
 	</div>
 </div>

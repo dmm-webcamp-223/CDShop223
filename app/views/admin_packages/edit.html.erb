@@ -1,0 +1,36 @@
+<div class = "container">
+    <h1>商品編集</h1>
+        <div class = "row">
+            <div class = "col-lg-3" >
+
+                  <%= form_for(@package, url: admin_package_path(@package.id)) do |f| %>
+                    <h4>アーティストを選ぶ</h4>
+                    <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %>
+                    <h4>レーベルを選ぶ</h4>
+                    <%= f.collection_select :label_id, @labels, :id, :label, include_blank: 'レーベル' %>
+                    <h4>ジャンルを選ぶ</h4>
+                    <%= f.collection_select :genre_id, @genres, :id, :category, include_blank: 'ジャンル' %>
+                    <h4>商品名</h4>
+                    <%= f.text_field :title %>
+                    <h4>税抜き価格</h4>
+                    <%= f.number_field :price %>
+                    <h4>ジャケット画像</h4>
+                    <%= f.attachment_field :disc_image %>
+                    <div class="package">
+                            <%= f.fields_for :discs do |t| %>
+                        <%= render "disc_fields", f: t %>
+                    <% end %>
+                      <div class = "disc-links">
+                          <%= link_to_add_association "ディスクを追加", f, :discs %>
+                      </div>
+                    </div>
+
+
+
+
+
+              <%= f.submit 'Update'%>
+              <% end %>
+
+          </div>
+</div>
