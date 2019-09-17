@@ -20,6 +20,12 @@ class User < ApplicationRecord
     [:name_kana_sei, :family_name],
     [:name_kana_mei, :given_name]
   ]
+
+  def self.serch(search)
+    return User.all unless search
+    User.where(["name_kanzi_sei LIKE ?OR name_kanzi_mei LIKE?OR name_kana_sei LIKE?OR name_kana_mei LIKE?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
+
 end
 
 class FullName
@@ -34,8 +40,4 @@ class FullName
     [@family_name, @given_name].compact.join(" ")
   end
 
-  def self.serch(search)
-  	return User.all unless search
-  	User.where(["name_kanzi_sei LIKE ?OR name_kanzi_mei LIKE?OR name_kana_sei LIKE?OR name_kana_mei LIKE?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
-  end
 end
