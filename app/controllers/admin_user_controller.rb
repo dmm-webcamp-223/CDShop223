@@ -21,6 +21,10 @@ class AdminUserController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def search
+		@users = User.search(params[:search])
+	end
+
 	private
 	def user_parms
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)
