@@ -19,6 +19,10 @@ class PackagesController < ApplicationController
     end
   end
 
+  def search
+    @packages = Package.search(params[:search])
+  end
+
   private
   def cart_params
       params.require(:cart).permit(:user_id)

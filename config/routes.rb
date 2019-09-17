@@ -17,20 +17,24 @@ Rails.application.routes.draw do
   end
 
 
+
+  resources :admin_users
+
   resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
+
   resources :artists, only: [:new, :create, :destroy]
   resources :labels, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :destroy]
 
 
   resources :ship_adresses, only: [:create]
+
   
   resources :order_logs, only: [:index]
 
-  
 
-  
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
+
      resources :carts, only: [:show, :create] do
        resources :recept_logs, only: [:create]
        resource :purchase_pages, only: [:update, :destroy]
@@ -40,11 +44,13 @@ Rails.application.routes.draw do
                get :purchase_confirmation               
             end
         end
-     end
-  end
-  
 
-  root 'packages#index'
+     end
+   end
+ end
+
+
+ root 'packages#index'
 
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
