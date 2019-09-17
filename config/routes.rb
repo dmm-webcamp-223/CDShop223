@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
+  resources :admin_users
   resources :admin_packages
   resources :packages, only: [:index, :show] do
     resources :cart_items, only: [:create, :update, :destroy]
@@ -15,10 +16,6 @@ Rails.application.routes.draw do
     post '/update_item' => 'carts#update_item'
     delete '/delete_item' => 'carts#delete_item'
   end
-
-
-
-  resources :admin_users
 
   resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
 

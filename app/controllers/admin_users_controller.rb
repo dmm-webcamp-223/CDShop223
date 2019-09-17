@@ -1,7 +1,7 @@
-class AdminUserController < ApplicationController
+class AdminUsersController < ApplicationController
 	def index
 		@users = User.all
-	end
+	end	end
 
 	def show
 		@user = User.find(params[:id])
@@ -21,10 +21,6 @@ class AdminUserController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def search
-		@users = User.search(params[:search])
-	end
-
 	private
 	def user_parms
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)
@@ -37,5 +33,3 @@ class AdminUserController < ApplicationController
 	def purchase_data_log_params
 		params.require(:purchase_data_log).permit(:purchase_price, :tax, :numbers, :created_at)
 	end
-
-end
