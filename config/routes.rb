@@ -26,8 +26,8 @@ Rails.application.routes.draw do
 
   resources :ship_adresses, only: [:create]
 
-  
-  resources :order_logs, only: [:index] do
+
+  resources :order_logs, only: [:index, :update] do
     resources :nested_order_logs, only: [:index]
   end
 
@@ -38,8 +38,8 @@ Rails.application.routes.draw do
        resource :purchase_pages, only: [:update, :destroy]
        resources :purchase_pages, only: [:show, :new, :create] do
              collection do
-               get :purchase_check 
-               get :purchase_confirmation               
+               get :purchase_check
+               get :purchase_confirmation
             end
         end
      end
@@ -51,4 +51,3 @@ Rails.application.routes.draw do
 
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
-

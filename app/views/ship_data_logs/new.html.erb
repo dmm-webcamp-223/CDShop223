@@ -7,6 +7,16 @@
   <div class="row">
     <h1>発注フォーム</h1>
     <%= form_for(@logs) do |f| %>
+    <% if @logs.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @logs.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+      <% @logs.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
     <table>
       <tr>
         <th>商品名</th>
