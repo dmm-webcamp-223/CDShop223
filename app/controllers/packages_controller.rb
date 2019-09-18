@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
   def index
-    @packages = Package.page(params[:page]).reverse_order
+    @packages = Package.page(params[:page]).reverse_order.search(params[:search])
   end
 
   def show

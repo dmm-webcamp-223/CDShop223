@@ -31,7 +31,7 @@
           <% end %>
             <%= form_for log, url: ship_data_log_path(log) do |f| %>
               <td><%= f.number_field :shiped_number %></td>
-          <% if log.arrival_status? %>
+          <% if log.arrival_status == true %>
                 <td> 入荷済　</td>
           <% else %>
                 <td><%= f.submit "更新" %></td>

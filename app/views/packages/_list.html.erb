@@ -1,16 +1,21 @@
+<style>
+.disc {
+  margin-top:10px;
+}
+</style>
     <div class="col-xs-8">
       <div class="tiarla">
-        <strong>商品</strong><br>
+        <h4><span class="label label-default">商品名</span></h4>
         <%= @package.title %><br>
-        <strong>アーティスト</strong><br>
+        <h4><span class="label label-default">アーティスト</span></h4>
           <%= @package.artist.artist %><br>
-          <strong>レーベル</strong><br>
+        <h4><span class="label label-default">レーベル</span></h4>
         <%= @package.label.label %><br>
       </div>
 			<table class="table">
 				<% discs.each do |disc| %>
 					<thead>
-						<tr>
+						<tr class="info">
 							<th>Disc.<%= disc.disc_number %></th>
 							<th>曲名</th>
 						</tr>

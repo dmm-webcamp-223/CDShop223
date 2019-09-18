@@ -83,4 +83,4 @@ gem 'paranoia'
 
 
 gem "cocoon"
-
+gem 'bxslider-rails'
