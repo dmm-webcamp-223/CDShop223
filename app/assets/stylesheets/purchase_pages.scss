@@ -5,11 +5,14 @@
 
 
 
+
 .clearfix:after{
     content: "";
     display: block;
     clear: both;
 }
+
+/*show.html.erb*/
 
 .h1{
   border-top: 2px solid black;
@@ -45,11 +48,6 @@
 .another_address{
 
 }
-
-
-
-
-
 
 .package_title{
   float: left;
@@ -97,6 +95,7 @@
 .order_confirm{
   text-align: center;
   color:black;
+  margin-bottom: 50px;
 }
 
 .three_pu{
@@ -109,7 +108,7 @@
    background-image: image-url("purchasecheck.jpg");
    background-size: cover;
    background-position: center;
-   padding-bottom: 70px;
+   padding-bottom: 130px;
 }
 
 .your_order_add{
