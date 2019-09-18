@@ -60,6 +60,12 @@
         </button>
         
       </div>
-        
+      <button class="btn btn-default col-lg-offset-7">
+        <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch,id: "confirm"  %>
+      </button>
+      <button class="btn btn-default col-lg-offset-7">
+        <%= link_to '戻る', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :delete,id: "back"  %>
+      </button>
+    </div>
   </div>
 </div>

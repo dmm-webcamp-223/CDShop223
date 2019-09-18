@@ -1,6 +1,7 @@
 <div style="background-image:url(<%= asset_path "purchase.jpg" %>)" >
 <div class="container purchase_p">
   <%= form_with model: @recept_log, url: user_cart_recept_logs_path(current_user.id,current_cart.id), method: :post, local: true do |form| %>
+
     <div class="h1"><h1 id="h1">商品購入ページ(Purchase)</h1></div>
         <h2 id="choise_add col-lg-2">発送住所の選択</h2>
           <div class="row address_p">
@@ -65,5 +66,6 @@
       <%= form.submit "確認ページへ" ,:class=>"btn btn-primary"%>
     </div>
   <% end %>
+
 
 </div>
