@@ -1,6 +1,6 @@
 <style>
-.disc {
-  margin-top:10px;
+.table {
+  margin-bottom:50px;
 }
 </style>
     <div class="col-xs-8">
@@ -12,8 +12,11 @@
         <h4><span class="label label-default">レーベル</span></h4>
         <%= @package.label.label %><br>
       </div>
-			<table class="table">
+      <div class="row">
+        <div class="col-xs-12">
+
 				<% discs.each do |disc| %>
+        			<table class="table">
 					<thead>
 						<tr class="info">
 							<th>Disc.<%= disc.disc_number %></th>
@@ -27,7 +30,11 @@
 								<td><%= song.song %></td>
 							</tr>
 						</tbody>
+
 					<% end %>
+          </table>
 				<% end %>
-			</table>
+
     </div>
+</div>
+</div>

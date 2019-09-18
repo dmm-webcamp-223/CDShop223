@@ -1,7 +1,7 @@
 class OrderLogsController < ApplicationController
   def index
-    @recept_logs=ReceptLog.all
+    @recept_logs=ReceptLog.all.reverse
   end
-  
-  
+
+
 end

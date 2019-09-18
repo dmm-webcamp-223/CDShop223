@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row cart clearfix">
         <h1>カート</h1>
+        <h1><span class="label label-danger"><%= notice %></span></h1><br>
               <% @cart_items.each do |c| %>
                   <div class="image col-lg-8">
                       <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
@@ -21,27 +22,23 @@
                             </div>
                   </div>
                   <div class="delete col-lg-1 col-lg-offset-1">
-                        <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete %> 
+                        <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete %>
                   </div>
                   <div class="col-lg-offset-2"></div>
               <% end %>
      </div>
-  
+
 </div>
-  
+
     <div class="total_packages">
       <p>購入する商品は</p>
       <%= current_cart.cart_items.count %>品
     </div>
-  
+
     <div class="total_cost">
       <%= current_cart.cart_items.sum(:total_cost) %>
     </div>
-  
+
     <div class="link_to_buy">
        <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id) %>
     </div>
-  
-      
-
-

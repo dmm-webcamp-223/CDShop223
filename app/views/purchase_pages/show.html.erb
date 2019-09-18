@@ -1,6 +1,7 @@
 <div class="container">
   <%= form_with model: @recept_log, url: user_cart_recept_logs_path(current_user.id,current_cart.id), method: :post, local: true do |form| %>
     <h1>商品購入ページ</h1>
+      <h1><span class="label label-danger"><%= notice %></span></h1><br>
        <h3 id="choise">発送住所の選択</h3>
           <div class="row address_p">
               <div class="order_address col-lg-5">
@@ -11,7 +12,7 @@
                           <%= @user.address %>
                   </div>
               </div>
-  
+
               <div class="another_address col-lg-5 col-lg-offset-2">
                   <h4>別の住所を使う</h4>
                       <%= link_to "住所を登録", new_user_cart_purchase_page_path(current_user.id,current_cart.id) %>
@@ -21,7 +22,7 @@
                       <%= form.select :delivering_adddress, options_from_collection_for_select(@ship_address, :shipping_add, :shipping_add) %>
               </div>
           </div>
-    
+
         <h3 id=check>商品の確認</h3>
            <div class="row check-p">
               <% @cart_items.each do |f| %>
@@ -39,13 +40,13 @@
                   </div>
             <% end %>
            </div>
-  
+
           <div class="row three_pu">
               <div class="how_to_pay col-lg-5">
                   <h2>支払い方法の選択</h2>
 		              <%= form.select :how_to_pay, [["クレジットカード","クレジットカード"],["銀行振込","銀行振込"],["代引き","代引き"]]%>
               </div>
-  
+
               <div class="payment-pu col-lg-5 col-lg-offset-2">
                   <h2>請求額</h2>
                       <h4>商品代金</h4>
@@ -54,9 +55,9 @@
                           <p id="send">500円</p>
                       <h4>合計税込</h4>
                           <%= @cart_items.sum(:total_cost)*1.08+500 %>
-                     
+
               </div>
-          </div>  
+          </div>
     <div class="order_confirm">
       <%= form.submit "確認ページへ" %>
     </div>

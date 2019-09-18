@@ -2,6 +2,9 @@
 .row package {
 	display:inline-block;
 }
+.bxslider {
+ height:500px;
+}
 </style>
 
 <div class="container">
@@ -9,7 +12,7 @@
 		<% @packages.each do |pack| %>
 			<li>
 				<%= link_to package_path(pack.id) do %>
-				 <%= attachment_image_tag pack, :disc_image, size:"250x200" %>
+				 <%= attachment_image_tag pack, :disc_image, size:"400x300" %>
 				 <% end %>
 				 <h5 class="col-xs-offset-5"><%= pack.title %></h5>
 			</li>

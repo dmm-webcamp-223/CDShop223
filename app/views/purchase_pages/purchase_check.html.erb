@@ -4,26 +4,27 @@
   <div class="order_comfirmation clearfix">
     <h1>注文内容の確認</h1>
       <div class="row">
+        <h1><span class="label label-danger"><%= notice %></span></h1><br>
               <div class="your_order_add col-lg-6">
                   <h2>お届け先</h2>
                       <h3>郵便番号</h3>
-                          <%= @recept_log.postal_code %>  
+                          <%= @recept_log.postal_code %>
                       <h3>住所</h3>
                           <%= @recept_log.delivering_adddress %>
-           
+
               </div>
-        
+
               <div class="total_costs col-lg-4 col-lg-offset-1 " >
                       <h2>合計金額</h2>
                           <h3>商品代金</h3>
                               <%= @cart_items.sum(:total_cost) %>
                           <h3>送料</h3>
-                              <p>500円</p> 
+                              <p>500円</p>
                       <h3>税込合計額</h3>
                               <%= @cart_items.sum(:total_cost)*1.08 %>
               </div>
       </div>
-      
+
       <div class="row">
         <div class="your_order_item col-lg-5  clearfix">
             <h2>商品内容</h2>
@@ -31,7 +32,7 @@
                     <div class="package_title">
                         <h3>商品名</h3>
                         <%= f.package.title %>
-                    </div>   
+                    </div>
                     <div class="package_quantity">
                         <h3>個数</h3>
                         <%= f.quantity %>
@@ -42,16 +43,16 @@
                     </div>
                 <% end %>
         </div>
-          
+
         <button class="btn btn-default col-lg-offset-7">
             <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch,id: "confirm"  %>
         </button>
-        
+
         <button class="btn btn-default col-lg-offset-7">
             <%= link_to '戻る', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :delete,id: "back"  %>
         </button>
-        
+
       </div>
-        
+
   </div>
 </div>

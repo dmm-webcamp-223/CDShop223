@@ -5,6 +5,9 @@
 </style>
 <div class="container">
   <div class="row">
+    <h1><u>発注一覧</u></h1>
+    <h1><span class="label label-danger"><%= notice %></span></h1><br>
+
     <% @logs.each do |log| %>
       <table class="table table-bordered">
           <thead>
@@ -25,14 +28,14 @@
           <td><%= log.ship_number %></td>
           <td><%= log.supplier %></td>
           <% if log.updated_at == log.created_at %>
-            <td>未入荷</td>
+            <td><span class="label label-danger">未入荷</span></td>
           <% else %>
             <td><%= log.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
           <% end %>
             <%= form_for log, url: ship_data_log_path(log) do |f| %>
               <td><%= f.number_field :shiped_number %></td>
           <% if log.arrival_status == true %>
-                <td> 入荷済　</td>
+                <td><span class="label label-success">入荷済み</span> </td>
           <% else %>
                 <td><%= f.submit "更新" %></td>
                 <% end %>

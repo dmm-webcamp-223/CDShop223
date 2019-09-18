@@ -16,13 +16,13 @@
                     <th><%= f.postal_code %> </th>
                     <th><%= f.delivering_adddress %></th>
                     <th><%= f.delivered_status %></th>
-                    <th><%= link_to f.created_at.to_s(:datetime), order_log_nested_order_logs_path(f.id) %></th>  
+                    <th><%= link_to f.created_at.to_s(:datetime), order_log_nested_order_logs_path(f.id) %></th> 
               </tr>
               <% end %>
       </div>
-    
+
     </div>
-  
+
   </div>
 
 </div>
