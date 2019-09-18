@@ -44,9 +44,15 @@
 								<div class="soldout">販売停止中</div><br>
 							<% end %>
 					</li>
-					<li><strong>在庫数　<strong><%= @package.disc_stock %></li><br>
-					<li><%= link_to "編集", edit_admin_package_path(@package) %><li>
+				<%= form_for(@package, url: admin_package_path(@package)) do |f| %>
+							  <li>
+									<%= f.check_box :disc_status, {}, checked_value = "true", unchecked_value = "false" %>
+								</li>
+								<li><%= f.submit "販売状況の更新" %></li>
+							<% end %>
 			</ul>
+					<li><strong>在庫数　<strong><%= @package.disc_stock %></li><br>
+					<li><%= link_to "編集", edit_admin_package_path(@package) %><li><br>
 		</div>
   <%= render 'packages/list', package: @packages, discs: @discs %>
 	</div>
