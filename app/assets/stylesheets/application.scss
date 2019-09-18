@@ -23,3 +23,44 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+#container {
+  height: 500px;
+}
+.image1 {
+background-image: url(test1.jpg);
+}
+.image2 {
+background-image: url(test2.jpg);
+}
+.image3 {
+background-image: url(test3.jpg);
+}
+.image4 {
+background-image: url(test4.jpg);
+}
+.image5 {
+background-image: url(test5.jpg);
+}
+
+body,
+#wrapper{
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+
+footer{
+  background-color: black;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.text-right{
+  color: white;
+}
+
