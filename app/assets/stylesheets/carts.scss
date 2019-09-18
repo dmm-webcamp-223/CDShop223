@@ -9,7 +9,52 @@
     clear: both;
 }
 
+
+
 .cart{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+
 }
 
+.image{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.package_name{
+  margin-top: 5px;
+}
+
+.total_packages{
+  
+}
+
+.total_cost{
+  color: beige;
+}
+
+.price{
+  color: aqua;
+}
+
+.carts{
+  background-image: image-url("cart.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 220px;
+  font-family: fantasy;
+  color: aqua;
+  font-size: 20px;
+}
+
+.form{
+  color: black;
+}
+
+#input_q{
+  color: cornsilk;
+}
+
+#buy_q{
+  color: cyan;
+}
