@@ -1,28 +1,28 @@
-    <div class="col-xs-8">
-      <div class="tiarla">
-        <strong>商品</strong><br>
-        <%= @package.title %><br>
-        <strong>アーティスト</strong><br>
-          <%= @package.artist.artist %><br>
-          <strong>レーベル</strong><br>
-        <%= @package.label.label %><br>
-      </div>
-			<table class="table">
-				<% discs.each do |disc| %>
-					<thead>
-						<tr>
-							<th>Disc.<%= disc.disc_number %></th>
-							<th>曲名</th>
-						</tr>
-					</thead>
-					<% disc.songs.each do |song| %>
-						<tbody>
-							<tr>
-								<td><%= song.song_number %></td>
-								<td><%= song.song %></td>
-							</tr>
-						</tbody>
-					<% end %>
-				<% end %>
-			</table>
-    </div>
+<div class="col-xs-8">
+	<div class="tiarla">
+		<strong>商品</strong><br>
+		<%= @package.title %><br>
+		<strong>アーティスト</strong><br>
+		<%= @package.artist.artist %><br>
+		<strong>レーベル</strong><br>
+		<%= @package.label.label %><br>
+	</div>
+	<table class="table">
+		<% discs.each do |disc| %>
+		<thead>
+			<tr>
+				<th>Disc.<%= disc.disc_number %></th>
+				<th>曲名</th>
+			</tr>
+		</thead>
+		<% disc.songs.each do |song| %>
+		<tbody>
+			<tr>
+				<td><%= song.song_number %></td>
+				<td><%= song.song %></td>
+			</tr>
+		</tbody>
+		<% end %>
+		<% end %>
+	</table>
+</div>
