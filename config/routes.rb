@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   resources :ship_adresses, only: [:create]
 
   
-  resources :order_logs, only: [:index]
-
+  resources :order_logs, only: [:index] do
+    resources :nested_order_logs, only: [:index]
+  end
 
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
 
@@ -41,10 +42,9 @@ Rails.application.routes.draw do
                get :purchase_confirmation               
             end
         end
-
      end
    end
- end
+
 
 
  root 'packages#index'
