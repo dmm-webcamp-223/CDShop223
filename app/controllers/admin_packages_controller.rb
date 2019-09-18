@@ -49,7 +49,7 @@ class AdminPackagesController < ApplicationController
 
     private
     def package_params
-        params.require(:package).permit(:title, :disc_image, :price, :disc_stock, :artist_id, :genre_id, :label_id,
+        params.require(:package).permit(:title, :disc_image, :price, :disc_stock, :artist_id, :genre_id, :label_id, :disc_status,
           discs_attributes: [:id, :disc_number, :_destroy,
             songs_attributes: [:id, :song, :song_number, :_destroy]])
     end
