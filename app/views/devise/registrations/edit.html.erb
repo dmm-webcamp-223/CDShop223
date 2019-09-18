@@ -1,50 +1,46 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 col-offset-4">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="rounded has-shadow-1">
 
       <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="form-header text-center">
-        <h2 class="form-header-title">Edit <%= resource_name.to_s.humanize %></h2>
+      <div class="text-center">
+        <h2 class="form-header-title">ユーザー編集</h2>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <div class="field">
-          <p>姓</p>
-          <%= f.text_field :name_kanzi_sei, autofocus: true, autocomplete: "name_kanzi_sei" %>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <%= f.text_field :name_kanzi_sei, autofocus: true, class:"form-control", autocomplete: "on", placeholder:"姓" %>
+          </div>
+
+          <div class="col-sm-6">
+            <%= f.text_field :name_kanzi_mei, class:"form-control", autocomplete: "on", placeholder:"名" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <%= f.text_field :name_kana_sei, class:"form-control", autocomplete: "on", placeholder:"セイ" %>
+          </div>
+
+          <div class="col-sm-6">
+            <%= f.text_field :name_kana_mei, class:"form-control", autocomplete: "on", placeholder:"メイ" %>
+          </div>
         </div>
 
         <div class="field">
-          <p>名</p>
-          <%= f.text_field :name_kanzi_mei, autofocus: true, autocomplete: "name_kanzi_mei" %>
+          <%= f.text_field :postal_code, class:"form-control", autocomplete: "on", placeholder:"郵便番号" %>
         </div>
 
         <div class="field">
-          <p>セイ</p>
-          <%= f.text_field :name_kana_sei, autofocus: true, autocomplete: "name_kana_sei" %>
+          <%= f.text_field :address, class:"form-control", autocomplete: "on", placeholder:"住所" %>
         </div>
 
         <div class="field">
-          <p>名</p>
-          <%= f.text_field :name_kana_mei, autofocus: true, autocomplete: "name_kana_mei" %>
+          <%= f.text_field :phone_number, class:"form-control", autocomplete: "on", placeholder:"電話番号" %>
         </div>
 
         <div class="field">
-          <p>郵便番号</p>
-          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-        </div>
-
-        <div class="field">
-          <p>住所</p>
-          <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-        </div>
-
-        <div class="field">
-          <p>電話番号</p>
-          <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-        </div>
-
-        <div class="field">
-          <p>メールアドレス</p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, class:"form-control", autocomplete: "on", placeholder:"メールアドレス" %>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -52,31 +48,24 @@
         <% end %>
 
         <div class="field">
-          <p>新しいパスワード</p> <i>(leave blank if you don't want to change it)</i>
-          <%= f.password_field :password, autocomplete: "new-password" %>
-          <% if @minimum_password_length %>
-          <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
+          <%= f.password_field :password, class:"form-control", autocomplete: "nope", placeholder:"新しいパスワード(変更しない場合は空欄)" %>
         </div>
 
         <div class="field">
-          <p>もう一度新しいパスワードを入力</p>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "nope", placeholder:"もう一度新しいパスワードを入力" %>
         </div>
 
         <div class="field">
-          <p>現在のパスワード</p>
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
+          <%= f.password_field :current_password, class:"form-control", autocomplete: "nope", placeholder:"現在のパスワード" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Update" %>
+          <%= f.submit "更新", class:"btn btn-primary btn-sm" %>
         </div>
         <% end %>
-        <h3>アカウントの削除</h3>
-        <p>Unhappy? <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "よろしいですか？" }, method: :delete %></p>
+        <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "よろしいですか？" }, method: :delete %>
+        <%= link_to "戻る", :back %>
       </div>
     </div>
   </div>
 </div>
-<%= link_to "戻る", :back %>

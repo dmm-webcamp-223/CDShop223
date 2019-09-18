@@ -12,22 +12,22 @@
 <body>
   <div id="wrapper">
   <div class="nav navbar-inverse">
-    <div class="container">
-      <span>Shop 223</span>
+    <div class="container-fluid">
+      <h1 class="text-center center-block text-muted">CDShop 223</h1>
 
       <% if admin_signed_in? %>
       <nav class="nav navbar-nav navbar-left">
-        <li>管理者としてログインしています</li>
+        <li class="text-muted">管理者としてログインしています</li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
       </nav>
       <% elsif user_signed_in? %>
       <nav  class="nav navbar-nav navbar-left" >
-       <li><%= current_user.kanzi_fullname %>でログインしています</li>
+       <li class="text-muted"><%= current_user.kanzi_fullname %>でログインしています</li>
        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
      </nav>
      <% else %>
      <nav class="nav navbar-nav navbar-left">
-      <li>ゲスト</li>
+      <li class="text-muted">ゲスト</li>
     </nav>
     <% end %>
 
@@ -72,9 +72,11 @@
 </div>
 <%= yield %>
 <footer>
+
   <div class="container footer">
     <div class="row footer col-lg-3 col-lg-offset-9">
         <p class="text-right footer">CopyRight Infratop.inc</p>
+
     </div>
   </div>
 </footer>
