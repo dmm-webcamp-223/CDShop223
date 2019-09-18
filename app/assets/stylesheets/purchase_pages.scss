@@ -3,26 +3,53 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
 .clearfix:after{
     content: "";
     display: block;
     clear: both;
 }
 
-.your_order_add{
-  float: left;
-  width: 60%;
-  background-color: orange;
-  border: 3px solid black;
-  padding-bottom: 20px;
+.h1{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+#h1{
+  font-family: serif;
+  color: chartreuse;
+  font-weight: bold;
+  font-style: oblique;
+}
+.purchase_p{
+  background-image: image-url("purchase.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: fantasy;
+  font-size: 20px;
+  color: chocolate;
+}
+
+#choise_add{
+  color: deeppink;
 }
 
 
-.your_order_item{
-  background-color: darkcyan;
-  border: 3px solid black;
-  padding-bottom: 20px;
+.check-p{
+  background-color: antiquewhite;
+  margin-bottom: 20px;
 }
+
+.another_address{
+
+}
+
+
+
+
+
 
 .package_title{
   float: left;
@@ -38,13 +65,6 @@
   float: left;
 }
 
-.total_costs{
-  float: left;
-  width: 30%;
-  background-color: aquamarine;
-  border: 3px solid black;
-  padding-bottom: 20px;
-}
 
 #confirm{
   color: black;
@@ -53,25 +73,20 @@
 
 .address_p{
   margin-bottom: 40px;
-  background-color: bisque
+  background-color: antiquewhite;
 }
 
-#choise{
-  margin-left: 20px;
-  margin-top: 20px;
+#check{
+  color: deeppink;
 }
 
-.check-p{
-  background-color: chartreuse;
-  margin-bottom: 20px;
-}
 
 #send{
   display: inline;
 }
 
 .payment-pu{
-  background-color:burlywood
+  background-color:antiquewhite;
 }
 
 .how_to_pay{
@@ -81,14 +96,64 @@
 
 .order_confirm{
   text-align: center;
+  color:black;
 }
 
 .three_pu{
   margin-bottom: 30px;
 }
 
+/*ここからpurchase_check.html */
 
+.purchase_c{
+   background-image: image-url("purchasecheck.jpg");
+   background-size: cover;
+   background-position: center;
+   padding-bottom: 70px;
+}
 
+.your_order_add{
+  float: left;
+  width: 60%;
+  border: 3px solid black;
+  background-color: darkcyan;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.your_order_item{
+  background-color: darkcyan;
+  border: 3px solid black;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.total_costs{
+  float: left;
+  width: 30%;
+  background-color: darkcyan;
+  border: 3px solid black;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.h1_c{
+  border-top: 2px solid yellow;
+  border-bottom: 2px solid yellow;
+  text-align: center;
+  color: aliceblue;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btn_com{
+  margin-top: 70px;
+}
+
+.btn_back{
+  margin-top: 70px;
+}
 
 
 
