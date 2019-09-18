@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
+  resources :admin_users
   resources :admin_packages
   resources :packages, only: [:index, :show] do
     resources :cart_items, only: [:create, :update, :destroy]
@@ -15,10 +16,6 @@ Rails.application.routes.draw do
     post '/update_item' => 'carts#update_item'
     delete '/delete_item' => 'carts#delete_item'
   end
-
-
-
-  resources :admin_users
 
   resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
 
@@ -29,18 +26,25 @@ Rails.application.routes.draw do
 
   resources :ship_adresses, only: [:create]
 
+  
+  resources :order_logs, only: [:index] do
+    resources :nested_order_logs, only: [:index]
+  end
+
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
-   resources :carts, only: [:show, :create] do
-     resources :recept_logs, only: [:create]
-     resource :purchase_pages, only: [:update]
-     resources :purchase_pages, only: [:show, :new, :create] do
-       collection do
-        get :purchase_check
-         get :purchase_confirmation
-       end
+
+     resources :carts, only: [:show, :create] do
+       resources :recept_logs, only: [:create]
+       resource :purchase_pages, only: [:update, :destroy]
+       resources :purchase_pages, only: [:show, :new, :create] do
+             collection do
+               get :purchase_check 
+               get :purchase_confirmation               
+            end
+        end
      end
    end
- end
+
 
 
  root 'packages#index'

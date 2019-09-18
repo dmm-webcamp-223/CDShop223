@@ -16,7 +16,7 @@
 
       <% if admin_signed_in? %>
       <nav class="nav navbar-nav navbar-left">
-        <li>管理者<%= current_user.kanzi_fullname %>でログインしています</li>
+        <li>管理者としてログインしています</li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
       </nav>
       <% elsif user_signed_in? %>
@@ -35,7 +35,7 @@
       <li><%= link_to "CDの新規追加", new_admin_package_path %></li>
       <li><%= link_to "管理者トップ", admin_packages_path %></li>
       <li><%= link_to "発注フォーム", ship_data_logs_path %></li>
-      <li><%= link_to "ユーザー一覧", admin_users_psth %></li>
+      <li><%= link_to "ユーザー一覧", admin_users_path %></li>
       <li><%= link_to "入荷履歴", ship_data_logs_path %></li>
       <li><%= form_tag(packages_path, :method => 'get') do %>
         <%= text_field_tag :search %>

@@ -1,0 +1,24 @@
+<div class="container" >
+  <div class="row">
+      <table class="table">
+        <thead>
+              <tr>
+                    <th>注文商品</th>
+                    <th>個数</th>
+                    <th>在庫数</th>
+              </tr>
+        </thead>
+              <% @purchase_data_logs.each do |f| %>
+              <tr>
+                    <th><%= f.package.title %></th>
+                    <th><%= f.numbers %> </th>
+                    <th><%= f.package.disc_stock %></th>
+              </tr>
+              <% end %>
+      </div>
+    
+    </div>
+  
+  </div>
+
+</div>

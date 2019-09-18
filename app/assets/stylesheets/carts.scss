@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.cart_items{
-  margin: 40px;
-}
 
 .clearfix::after{
     content: "";
@@ -12,11 +9,7 @@
     clear: both;
 }
 
-
-.package_name{
-  float: left;
+.cart{
+  margin-bottom: 30px;
 }
 
-.line{
-  border_bottom: 10px solid black;
-}

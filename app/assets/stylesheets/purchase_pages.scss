@@ -1,3 +1,119 @@
 // Place all the styles related to the PurchasePages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.your_order_add{
+  float: left;
+  width: 60%;
+  background-color: orange;
+  border: 3px solid black;
+  padding-bottom: 20px;
+}
+
+
+.your_order_item{
+  background-color: darkcyan;
+  border: 3px solid black;
+  padding-bottom: 20px;
+}
+
+.package_title{
+  float: left;
+  margin-right: 20px;
+}
+
+.package_quantity{
+  float: left;
+  margin-right: 20px;
+}
+
+.package_price{
+  float: left;
+}
+
+.total_costs{
+  float: left;
+  width: 30%;
+  background-color: aquamarine;
+  border: 3px solid black;
+  padding-bottom: 20px;
+}
+
+#confirm{
+  color: black;
+  float: left;
+}
+
+.address_p{
+  margin-bottom: 40px;
+  background-color: bisque
+}
+
+#choise{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.check-p{
+  background-color: chartreuse;
+  margin-bottom: 20px;
+}
+
+#send{
+  display: inline;
+}
+
+.payment-pu{
+  background-color:burlywood
+}
+
+.how_to_pay{
+  background-color: antiquewhite;
+  padding-bottom: 20px;
+}
+
+.order_confirm{
+  text-align: center;
+}
+
+.three_pu{
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
