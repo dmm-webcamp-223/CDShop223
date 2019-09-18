@@ -35,15 +35,17 @@ class PurchasePagesController < ApplicationController
      @recept_log.total = @cart_items.sum(:total_cost)*1.08
      @recept_log.postage = 500
      @recept_log.save!
+     @recept_log_S = ReceptLog.order('id DESC').find_by(user_id: params[:user_id])
      
           @cart_items.each do |f|
             @purchase_data_log =PurchaseDataLog.new()
             @purchase_data_log.package_id = f.package.id
-            @purchase_data_log.recept_log_id = current_user.id
+            @purchase_data_log.recept_log_id = @recept_log_S.id
             @purchase_data_log.purchase_price = f.package.price
             @purchase_data_log.tax = (f.package.price*0.08)
             @purchase_data_log.numbers=f.quantity
             @purchase_data_log.save!
+            
           end
       
         @cart_items.each do |f|
