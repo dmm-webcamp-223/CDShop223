@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recept_logs = ReceptLog.where(recept_log_id: current_user.id).all.includes(:purchase_data_logs)
+    @recept_logs = ReceptLog.where(user_id: current_user.id).all.includes(:purchase_data_logs)
   end
 
   private

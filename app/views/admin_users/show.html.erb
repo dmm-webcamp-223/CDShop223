@@ -1,36 +1,41 @@
-<h2>ユーザー詳細</h2>
-<hr>
-<% if flash[:notice] %>
-<p><%= flash[:notice]%></p>
-<% end %>
-<table>
-	<td><%= @user.kanzi_fullname %></td>
-	<td><%= @user.kana_fullname %></td>
-	<td><%= @user.password %></td>
-	<td><%= @user.status %></td>
-	<td><%= @user.post_code %></td>
-	<td><%= @user.address %></td>
-</table>
-<%= link_to "編集", edit_user_registration_path, class: "btn btn-success" %>
-<%= link_to "削除", user_path, class: "btn btn-danger", method: :delete, "data-comfirm" => "よろしいですか？" %>
-<strong>購入履歴</strong>
-<% if @user.recept_log.nil? %>
-<p>購入履歴は存在しません</p>
+<div class="container">
 
-<% else %>
-<% @user.recept_log.purchase_data_logs.each do |purchase| %>
-<p><%= p.created_at.to_s(:datetime) %></p>
-<table border="1" style="border-collapse: collapse">
-	<tr>
-		<td><%= purchase.created_at.to_s(:datetime) %></td>
-		<td><%= purchase.disc_image %></td>
-		<td><%= purchase.title %></td>
-		<td><%= purchase.recept_logs.purchase_data_logs.numbers %><br>
-			<%= purchase.recept_log.total %></td>
-		<td><%= purchase.recept_logs.derivering_address %></td>
-		<td><%= purchase.recept_logs.derivered_status %></td>
-	</tr>
-</table>
-<% end %>
+	<h2>ユーザー詳細</h2>
+	<hr>
+	<% if flash[:notice] %>
+	<p><%= flash[:notice]%></p>
+	<% end %>
+	<table>
+		<td><%= @user.kanzi_fullname %></td>
+		<td><%= @user.kana_fullname %></td>
+		<td><%= @user.password %></td>
+		<td><%= @user.user_status %></td>
+		<td><%= @user.postal_code %></td>
+		<td><%= @user.address %></td>
+	</table>
+	<%= link_to "編集", edit_user_registration_path, class: "btn btn-success" %>
+	<%= link_to "削除", user_path, class: "btn btn-danger", method: :delete, "data-comfirm" => "よろしいですか？" %>
+	<strong>購入履歴</strong>
 
-<% end %>
+	<% if @recept_logs.blank? %>
+	<p>購入履歴は存在しません</p>
+
+	<% else %>
+	<% @recept_logs.each do |recept_log| %>
+	<% recept_log.purchase_data_logs.each do |purchase_data_log| %>
+	<p><%= purchase_data_log.created_at.to_s(:datetime) %></p>
+	<table border="1" style="border-collapse: collapse">
+		<tr>
+			<td><%= purchase_data_log.created_at.to_s(:datetime) %></td>
+			<td><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
+			<td><%= purchase_data_log.package.title %></td>
+			<td><%= purchase_data_log.numbers %>個<br>
+				<%= recept_log.total %>円</td>
+			<td><%= recept_log.delivering_adddress %></td>
+			<td><%= recept_log.delivered_status %></td>
+		</tr>
+	</table>
+	<% end %>
+	<% end %>
+	<% end %>
+</div>
