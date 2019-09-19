@@ -6,8 +6,8 @@ class User < ApplicationRecord
   validates :name_kanzi_mei, presence: true
   validates :name_kana_sei, presence: true
   validates :name_kana_mei, presence: true
-  validates :postal_number, presence: true
-  validates :addrress, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
   validates :phone_number, presence: true
   validates :email, presence: true
   validates :password, presence: true
