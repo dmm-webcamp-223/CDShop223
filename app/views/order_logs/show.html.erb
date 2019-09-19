@@ -8,17 +8,14 @@
                     <th>購入時の価格</th>
               </tr>
         </thead>
-              <% @purchase_data_logs.each do |f| %>
+              <% @logs.each do |log| %>
               <tr>
-                    <th><%= f.package.title %></th>
-                    <th><%= f.numbers %> </th>
-                    <th><%= f.purchase_price %></th>
+                    <th><%= log.package.title %></th>
+                    <th><%= log.numbers %> </th>
+                    <th><%= log.purchase_price %> </th>
+                    <th><%= log.numbers * log.purchase_price %></th>
               </tr>
               <% end %>
-      </div>
-    
+      </table>
     </div>
-  
-  </div>
-
 </div>

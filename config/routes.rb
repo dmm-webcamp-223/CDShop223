@@ -27,9 +27,7 @@ Rails.application.routes.draw do
   resources :ship_adresses, only: [:create]
 
 
-  resources :order_logs, only: [:index, :update] do
-    resources :nested_order_logs, only: [:index]
-  end
+  resources :order_logs, only: [:index, :update, :show, :update]
 
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
 
