@@ -24,6 +24,18 @@
     box-sizing: border-box;
 }
 
+html{
+  position: relative;
+  min-height: 100%;
+}
+
+
+
+body{
+  margin-bottom: 60px;
+  padding-bottom: 0;
+}
+
 
 #container {
   height: 500px;
@@ -44,20 +56,19 @@ background-image: url(test4.jpg);
 background-image: url(test5.jpg);
 }
 
-body,
-#wrapper{
-  min-height: 100vh;
-  position: relative;
-  box-sizing: border-box;
-}
+
+
 
 
 
 footer{
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0;
+  
+  height: 60px;
   background-color: black;
   width: 100%;
-  position: absolute;
-  bottom: 0;
 }
 
 .text-right{

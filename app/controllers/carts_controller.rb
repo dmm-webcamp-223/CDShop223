@@ -1,4 +1,8 @@
 class CartsController < ApplicationController
+  
+  before_action :authenticate_user!, except: [:show]
+  
+  
   before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
   
   def show
@@ -15,13 +19,19 @@ class CartsController < ApplicationController
 
   # 商品詳細画面から、カートに入れるを押した時のアクション
   def add_item
-    if @cart_item.blank?
+    package=Package.find(params[:package_id])
+    
+    if package.disc_stock > 0
+      if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(package_id: params[:package_id])
-    end
-
+      end
     @cart_item.quantity += 1
     @cart_item.save
     redirect_to user_cart_path(current_user.id,current_cart.id)
+    
+    else 
+      redirect_to package_path(package.id), notice: "在庫切れです"
+    end
   end
 
   # カート詳細画面から、「更新」を押した時のアクション

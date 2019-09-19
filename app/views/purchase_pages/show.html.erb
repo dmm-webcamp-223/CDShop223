@@ -6,20 +6,10 @@
         <h2 id="choise_add col-lg-2">発送住所の選択</h2>
 
           <div class="row address_p">
-              <div class="order_address col-lg-3">
-                  <div class="registered_add">
-                       <h3>郵便番号</h3>
-                          <%= @user.postal_code %>
-                       <h3>住所</h3>
-                          <%= @user.address %>
-                  </div>
-              </div>
-
-  
               <div class="another_address col-lg-3 ">
-                  <h3>別の住所を使う</h3>
+                  <h3>配送先住所を登録する</h3>
 
-                      <%= link_to "住所を登録", new_user_cart_purchase_page_path(current_user.id,current_cart.id) %>
+                      <%= link_to "配送先住所を登録", new_user_cart_purchase_page_path(current_user.id,current_cart.id) %>
                 </div>
                   <div class="deliver_add col-lg-6">
                   <h3>配送先住所を選択</h3>
@@ -44,7 +34,7 @@
                   </div>
                   <div class="total_pu col-lg-3 col-lg-offset-1">
                       <h4>税込価格</h4>
-                          <%= f.total_cost*1.08 %>
+                          <%= (f.total_cost*1.08).to_i %>
                   </div>
             <% end %>
            </div>
@@ -62,7 +52,7 @@
                       <h4>送料</h4>
                           <p id="send">500円</p>
                       <h4>合計税込</h4>
-                          <%= @cart_items.sum(:total_cost)*1.08+500 %>
+                          <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>
 
               </div>
           </div>

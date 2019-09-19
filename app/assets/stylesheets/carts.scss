@@ -9,11 +9,9 @@
     clear: both;
 }
 
-
-
 .cart{
   margin-bottom: 10px;
-
+  
 }
 
 .image{
@@ -41,10 +39,12 @@
   background-image: image-url("cart.jpg");
   background-size: cover;
   background-position: center;
-  padding-bottom: 240px;
+  background-attachment: fixed;
+  min-height: 1000px;
   font-family: fantasy;
   color: aqua;
   font-size: 20px;
+  width: 100%;
 }
 
 .form{
@@ -57,4 +57,12 @@
 
 #buy_q{
   color: cyan;
+}
+
+.btn-delete{
+  color:chartreuse;
+}
+
+.btn-buy{
+  color: darkorchid;
 }

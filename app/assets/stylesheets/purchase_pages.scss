@@ -30,6 +30,7 @@
   background-image: image-url("purchase.jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   font-family: fantasy;
   font-size: 20px;
   color: chocolate;
@@ -108,6 +109,7 @@
    background-image: image-url("purchasecheck.jpg");
    background-size: cover;
    background-position: center;
+   background-attachment: fixed;
    padding-bottom: 130px;
 }
 

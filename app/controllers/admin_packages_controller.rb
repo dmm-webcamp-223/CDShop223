@@ -45,6 +45,8 @@ class AdminPackagesController < ApplicationController
 	end
 
 	def destory
+      package = Pckage.find(params[:id])
+      package.destroy
 	end
 
     private
