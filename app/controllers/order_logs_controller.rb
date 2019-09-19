@@ -1,6 +1,7 @@
 class OrderLogsController < ApplicationController
   def index
     @recept_logs=ReceptLog.all.reverse
+    @users=User.with_deleted
   end
 
   def show

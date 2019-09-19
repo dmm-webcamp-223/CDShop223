@@ -19,7 +19,8 @@
         </thead>
               <% @recept_logs.each do |log| %>
               <tr>
-                    <th><%= log.user.kanzi_fullname %></th>
+                <% user = @users.find(log.user_id) %>
+                    <th><%= user.kanzi_fullname %> </th>
                     <th><%= log.postal_code %> </th>
                     <th><%= log.delivering_adddress %></th>
                     <% if log.delivered_status %>
@@ -29,9 +30,10 @@
                     <% end %>
                     <th><%= log.total + 500 %></th>
                     <th><%= link_to log.created_at.to_s(:datetime), order_log_path(log) %></th>
-                    <%# <%= form_for log,%> %>
+                  
               </tr>
               <% end %>
+    </table>
       </div>
 
     </div>
