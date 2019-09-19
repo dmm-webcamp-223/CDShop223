@@ -8,10 +8,6 @@ class OrderLogsController < ApplicationController
     @logs = PurchaseDataLog.where(recept_log_id: params[:id])
   end
 
-  def update
-    @log = ReceptLog.find(params[:id])
-    @log.update(recept_params)
-  end
 
     private
     def recept_params

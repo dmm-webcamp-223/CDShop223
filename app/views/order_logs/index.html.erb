@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <div class="container" >
   <div class="row">
       <table class="table">
@@ -30,10 +24,14 @@
                     <% end %>
                     <th><%= log.total + 500 %></th>
                     <th><%= link_to log.created_at.to_s(:datetime), order_log_path(log) %></th>
-                  
-              </tr>
-              <% end %>
-    </table>
-      </div>
+
+                    <%= form_for log, url: user_cart_recept_log_path(current_user.id,current_cart.id,log.id), controller: "order_logs" ,action: "update" do |form| %>
+                      <th><%= form.check_box :delivered_status %></th>
+                      <th><%= form.submit "更新" %></th>
+                    <% end %>
+             </tr>
+             <% end %>
+      </table>
 
     </div>
+</div>

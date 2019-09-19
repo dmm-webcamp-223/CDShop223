@@ -42,5 +42,5 @@ class ShipDataLogsController < ApplicationController
 
   def ship_data_log_params
         params.require(:ship_data_log).permit(:package_id, :title, :ship_number, :supplier, :shiped_number)
-    end
+  end
 end
