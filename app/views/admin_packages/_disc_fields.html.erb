@@ -1,8 +1,6 @@
 <%# コクーンの部分テンプレート %>
 
-<div class ="container">
-    <div class="row">
-        <div class="col-lg-2">
+<div class="col-lg-5">
             <div class="nested-fields">
                 <h4>ディスク番号</h4>
                 <%= f.number_field :disc_number %>
@@ -17,7 +15,6 @@
             <div class="add-songs">
                 <%= link_to_add_association "曲を追加", f, :songs %>
             </div>
-        </div>
     </div>
 </div>
-</div>
+
