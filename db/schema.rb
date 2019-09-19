@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_080709) do
+ActiveRecord::Schema.define(version: 2019_09_19_085220) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 2019_09_17_080709) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name_kanzi_sei"
     t.string "name_kanzi_mei"
     t.string "name_kana_sei"
     t.string "name_kana_mei"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_080709) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.boolean "user_status"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
