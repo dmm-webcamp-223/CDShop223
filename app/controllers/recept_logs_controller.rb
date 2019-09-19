@@ -16,11 +16,6 @@ class ReceptLogsController < ApplicationController
 
   end
 
-  def updated
-    @log = RecptLog.find(params[:id])
-    @log.update(recept_logs_params)
-  end
-
 
 
   private

@@ -1,27 +1,32 @@
+<div class="container">
+
 <h1>マイページ</h1>
-<%= link_to "ユーザー編集", edit_user_registration_path %>
+<%= link_to "ユーザー編集", edit_user_registration_path, class:"btn btn-success" %>
 <hr>
 <% if flash[:notice] %>
 <p><%= flash[:notice]%></p>
 <% end %>
 <strong>購入履歴</strong>
-<% if @recept_log.nil? %>
+<% if @recept_logs.blank? %>
 <p>購入履歴は存在しません</p>
 
 <% else %>
-<% @recept_log.purchase_data_logs.each do |purchase| %>
-<p><%= p.created_at.to_s(:datetime) %></p>
+<% @recept_logs.each do |recept_log| %>
+<% recept_log.purchase_data_logs.each do |purchase_data_log| %>
+<p><%= purchase_data_log.created_at.to_s(:datetime) %></p>
 <table border="1" style="border-collapse: collapse">
 	<tr>
-		<td><%= purchase.created_at.to_s(:datetime) %></td>
-		<td><%= purchase.disc_image %></td>
-		<td><%= purchase.title %></td>
-		<td><%= purchase.recept_logs.purchase_data_logs.numbers %><br>
-			<%= purchase.recept_log.total %></td>
-		<td><%= purchase.recept_logs.derivering_address %></td>
-		<td><%= purchase.recept_logs.derivered_status %></td>
+		<td><%= purchase_data_log.created_at.to_s(:datetime) %></td>
+		<td><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
+		<td><%= purchase_data_log.package.title %></td>
+		<td><%= purchase_data_log.numbers %>個<br>
+			<%= recept_log.total %>円</td>
+		<td><%= recept_log.delivering_adddress %></td>
+		<td><%= recept_log.delivered_status %></td>
 	</tr>
 </table>
-<% end %>
 
 <% end %>
+<% end %>
+<% end %>
+</div>

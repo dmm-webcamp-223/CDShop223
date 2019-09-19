@@ -1,11 +1,11 @@
 class AdminUsersController < ApplicationController
 	def index
 		@users = User.all
-	end	end
+	end
 
 	def show
 		@user = User.find(params[:id])
-		@recept_logs = ReceptLog.where(recept_log_id: @user.id).all.includes(:purchase_data_logs)
+		@recept_logs = ReceptLog.where(user_id: @user.id).all.includes(:purchase_data_logs)
 	end
 
 	def update
@@ -33,3 +33,4 @@ class AdminUsersController < ApplicationController
 	def purchase_data_log_params
 		params.require(:purchase_data_log).permit(:purchase_price, :tax, :numbers, :created_at)
 	end
+end

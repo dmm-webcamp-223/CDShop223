@@ -4,18 +4,16 @@ class CartsController < ApplicationController
   
   
   before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
-  
+
   def show
     @cart_items = current_cart.cart_items
     @cart_number = CartItem.new
-    
 
     @cart_items.each do |c|
       c.total_cost = (c.package.price * c.quantity)
       c.save
     end
   end
-    
 
   # 商品詳細画面から、カートに入れるを押した時のアクション
   def add_item
@@ -47,9 +45,6 @@ class CartsController < ApplicationController
     @cart_item.destroy
     redirect_to user_cart_path(current_user.id,current_cart.id)
   end
-  
-
-
 
   private
   def cart_item_params

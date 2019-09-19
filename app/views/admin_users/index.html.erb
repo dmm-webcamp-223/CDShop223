@@ -1,16 +1,25 @@
-<h1>ユーザー一覧(新規順)</h1>
+<div class="container">
 
-<%= form_tag admin_users_path, :method => 'get' do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
-<% end %>
+	<div class="row">
+		<h1>ユーザー一覧(更新順)</h1>
+	</div>
 
-<table>
-	<% @users.each do |user| %>
-	<tr>
-		<td><%= link_to "#{user.kanzi_fullname}", user_path(user.id) %><br>
-			<%= user.updated_at.to_s(:datetime) %>
-		</td>
-	</tr>
-	<% end %>
-</table>
+	<div class="row">
+		<%= form_tag admin_users_path, :method => 'get' do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'ユーザー検索', :name => nil %>
+		<% end %>
+	</div>
+
+	<div class="row">
+		<table class="table-bordered table-hover">
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= link_to "#{user.kanzi_fullname}", admin_user_path(user.id) %><br>
+					<%= user.updated_at.to_s(:datetime) %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
