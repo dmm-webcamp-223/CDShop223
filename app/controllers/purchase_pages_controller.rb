@@ -26,7 +26,7 @@ class PurchasePagesController < ApplicationController
     else
       render :new
     end
-  end
+    end
 
    def update
      @cart_items = CartItem.where(cart_id: params[:cart_id])
