@@ -7,22 +7,25 @@
                     <th>郵便番号</th>
                     <th>住所</th>
                     <th>配送状況</th>
+                    <th>総計</th>
                     <th>日付</th>
               </tr>
         </thead>
-              <% @recept_logs.each do |f| %>
+              <% @recept_logs.each do |log| %>
               <tr>
-                    <th><%= f.user.kanzi_fullname %></th>
-                    <th><%= f.postal_code %> </th>
-                    <th><%= f.delivering_adddress %></th>
-                    <th><%= f.delivered_status %></th>
-                    <th><%= link_to f.created_at.to_s(:datetime), order_log_nested_order_logs_path(f.id) %></th> 
+                    <th><%= log.user.kanzi_fullname %></th>
+                    <th><%= log.postal_code %> </th>
+                    <th><%= log.delivering_adddress %></th>
+                    <% if log.delivered_status %>
+                      <th><span class="label label-success">配送済み</span></th>
+                    <% else %>
+                      <th><span class="label label-danger">未発送</span></th>
+                    <% end %>
+                    <th><%= log.total + 500 %></th>
+                    <th><%= link_to log.created_at.to_s(:datetime), order_log_path(log) %></th>
+                    <%# <%= form_for log,%> %>
               </tr>
               <% end %>
       </div>
 
     </div>
-
-  </div>
-
-</div>
