@@ -32,8 +32,12 @@
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
 			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
 				<%= recept_log.total %>円</td>
-			<td class="col-xs-4"><%= recept_log.delivering_adddress %></td>
-			<td class="col-xs-1"><%= recept_log.delivered_status %></td>
+			<td><%= recept_log.delivering_adddress %></td>
+			<% if recept_log.delivered_status %>
+				<td><span class="label label-success">配送済み</span></td>
+			<% else %>
+				<td><span class="label label-danger">未発送</span></td>
+			<% end %>
 		</tr>
 	</table>
 	<% end %>

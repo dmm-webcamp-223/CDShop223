@@ -1,7 +1,6 @@
 class AdminPackagesController < ApplicationController
-  
-   before_action :authenticate_admin!
-  
+  before_action :authenticate_admin!
+
     def new
       @artists = Artist.all
       @labels = Label.all
@@ -33,10 +32,11 @@ class AdminPackagesController < ApplicationController
 	def update
     @package = Package.find(params[:id])
      if @package.update(package_params)
+
      redirect_to admin_package_path(params[:id]), notice:''
     else
      render :edit
-   end
+     end
 	end
 
 	def edit

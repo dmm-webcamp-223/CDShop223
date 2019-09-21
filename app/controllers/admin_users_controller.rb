@@ -1,8 +1,8 @@
 class AdminUsersController < ApplicationController
-    before_action :authenticate_admin!
-  
+	  before_action :authenticate_admin!
 	def index
-		@users = User.search(params[:search])
+		@users = User.page(params[:page]).reverse_order
+
 	end
 
 	def show
@@ -28,13 +28,8 @@ class AdminUsersController < ApplicationController
 	def edit
 		@user = User.find(params[:id])
 	end
-  
-    def destroy
-        user=User.find(params[:id])
-        user.delete
-        redirect_to admin_users_path
-    end
-  
+
+ 
 	private
 	def user_parms
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)

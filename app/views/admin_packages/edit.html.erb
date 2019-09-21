@@ -1,6 +1,6 @@
 <div class = "container">
-    <h1>新規商品の追加</h1>
-                   <%= form_for(@package, url: admin_package_path(params[:id])) do |f| %>
+  <h1><u>新規商品の追加</u></h1>
+                   <%= form_for @package, url: admin_package_path(@package) do |f| %>
                       <div class = "row">
                       <div class = "col-lg-3" >
                         <h4>アーティストを選ぶ</h4>
@@ -18,7 +18,7 @@
                         <h4>ジャケット画像</h4>
                         <%= f.attachment_field :disc_image %>
                       </div>
-                     
+
                         <div class="package col-lg-6">
                               <div id="#dogList">
                                 <%= f.fields_for :discs do |t| %>
@@ -26,9 +26,9 @@
                               </div>
                         <% end %>
                           <div class = "disc-links">
-                              <%= link_to_add_association "ディスクを追加", f, :discs , class: "btn btn-link", data: {  association_insertion_method: "append" }%>            
+                              <%= link_to_add_association "ディスクを追加", f, :discs , class: "btn btn-link", data: {  association_insertion_method: "append" }%>
                           </div>
-                      
+
                         <div class="actions">
                           <%= f.submit 'Save',class:"btn_save"%>
                           <button class="btn btn-danger">
@@ -38,6 +38,6 @@
                             </div>
                          </div>
                   <% end %>
-       
-        
+
+
 </div>
