@@ -1,7 +1,7 @@
 class AdminUsersController < ApplicationController
 	  before_action :authenticate_admin!
 	def index
-		@users = User.page(params[:page]).reverse_order
+		@users = User.with_deleted.search(params[:search])
 
 	end
 

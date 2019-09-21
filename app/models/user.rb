@@ -40,10 +40,7 @@ class User < ApplicationRecord
     end
   end
   
-  
-  #クリエイトアットを月に変える
-  def month
-  end
+
   
   
 end
