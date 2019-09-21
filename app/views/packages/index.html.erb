@@ -39,11 +39,11 @@
 				        	<%= package.title %><br>
 				          <%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
 								</div>
-							<% end %>
+							
 
 							 <%# 販売停止中なら %>
 								<% else %>
-								<div class="col-xs-2">
+								<div class="col-xs-3">
 										<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
 										<% if package.disc_stock == 0 %>
 											<span class="label label-warning">販売停止</span><span class="label label-danger">売り切れ</span><br>
@@ -54,7 +54,8 @@
 									<%= package.title %><br>
 									<%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
 								</div>
-								<% end %>
+                            <% end %>
+				        <% end %>
 				</div>
 				<div class="col-xs-7 col-xs-offset-5">
     			<%= paginate @packages, class: "paginate" %>

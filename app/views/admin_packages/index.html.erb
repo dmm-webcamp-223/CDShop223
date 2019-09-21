@@ -9,7 +9,7 @@
 	<div class="row">
 		<h2>新着順</h2>
 		<% @packages.each do |package| %>
-		<div class="col-xs-2">
+		<div class="col-xs-3">
 			<%= link_to admin_package_path(package.id) do %>
 			<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
 			<% end %>

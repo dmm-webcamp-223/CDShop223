@@ -2,7 +2,7 @@ class AdminUsersController < ApplicationController
 	  before_action :authenticate_admin!
 	def index
 
-		@users = User.search(params[:search])
+		@users = User.with_deleted.search(params[:search])
 
 	end
 
