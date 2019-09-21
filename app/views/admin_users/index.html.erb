@@ -5,20 +5,26 @@
 	</div>
 
 	<div class="row">
-		<%= form_tag admin_users_path, :method => 'get' do %>
+		<%= form_tag(admin_users_path, :method => 'get') do %>
 		<%= text_field_tag :search %>
 		<%= submit_tag 'ユーザー検索', :name => nil %>
 		<% end %>
 	</div>
-		<% @users.each do |user| %>
-		<div class="pull-left table-responsive">
-			<table class="table table-bordered">
-				<tr>
-					<td><%= link_to "#{user.kanzi_fullname}", admin_user_path(user.id) %><br>
-						<%= user.updated_at.to_s(:datetime) %>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<% end %>
+	<% @users.each do |user| %>
+	<div class="pull-left table-responsive">
+		<table class="table table-bordered">
+			<tr>
+				<td><%= link_to "#{user.kanzi_fullname}", admin_user_path(user.id) %><br>
+					<% if user.deleted? %>
+					<%= user.deleted_at.to_s(:datetime) %>
+					<p class="text-danger">退会済み</p>
+					<% else %>
+					<%= user.updated_at.to_s(:datetime) %>
+					<p class="text-success">最終更新</p>
+					<% end %>
+				</td>
+			</tr>
+		</table>
 	</div>
+	<% end %>
+</div>
