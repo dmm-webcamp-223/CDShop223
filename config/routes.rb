@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
 
      resources :carts, only: [:show, :create] do
-       resources :recept_logs, only: [:create]
+       resources :recept_logs, only: [:create, :update]
        resource :purchase_pages, only: [:update, :destroy]
        resources :purchase_pages, only: [:show, :new, :create] do
              collection do

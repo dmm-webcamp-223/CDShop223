@@ -11,9 +11,11 @@
 		<td><%= @user.postal_code %></td>
 		<td><%= @user.address %></td>
 	</table>
+
 	<%= link_to "編集", edit_user_registration_path, class: "btn btn-success btn-sm" %>
 	<%= link_to "削除", admin_user_path, class: "btn btn-danger btn-sm", method: :delete, "data-comfirm" => "よろしいですか？" %><br>
 	<hr>
+
 	<strong>購入履歴</strong>
 
 	<% if @recept_logs.blank? %>
