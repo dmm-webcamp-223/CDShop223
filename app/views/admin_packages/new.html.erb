@@ -20,14 +20,14 @@
                         <%= f.attachment_field :disc_image %>
                       </div>
                      
-                        <div class="package col-lg-6">
+                        <di v class="package col-lg-6">
                               <div id="#dogList">
                                 <%= f.fields_for :discs do |t| %>
                                   <%= render "disc_fields", f: t %>
                               </div>
                         <% end %>
                           <div class = "disc-links">
-                              <%= link_to_add_association "ディスクを追加", f, :discs , class: "btn btn-link", data: {  association_insertion_method: "append" }%>            
+                              <%= link_to_add_association  "ディスクを追加", f, :discs , class: "btn btn-link", data: {  association_insertion_method: "append" }%>            
                           </div>
                       
                         <div class="actions">
