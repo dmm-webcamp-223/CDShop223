@@ -18,7 +18,7 @@ class ReceptLogsController < ApplicationController
   def update
     @log = ReceptLog.find(params[:id])
     @log.delivered_status == true
-    @log.update(delivered_status: @log)
+    @log.update(delivered_status: true)
     redirect_to order_logs_path
   end
 
