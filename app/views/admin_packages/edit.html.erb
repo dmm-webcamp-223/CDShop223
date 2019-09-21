@@ -1,6 +1,6 @@
 <div class = "container">
     <h1>新規商品の追加</h1>
-                   <%= form_for(@package, url: '/admin_packages') do |f| %>
+                   <%= form_for(@package, url: admin_package_path(params[:id])) do |f| %>
                       <div class = "row">
                       <div class = "col-lg-3" >
                         <h4>アーティストを選ぶ</h4>

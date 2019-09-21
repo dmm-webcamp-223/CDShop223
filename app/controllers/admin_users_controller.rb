@@ -1,10 +1,12 @@
 class AdminUsersController < ApplicationController
+    before_action :authenticate_admin!
+  
 	def index
-		@users = User.all
+		@users = User.search(params[:search])
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.with_deleted.find(params[:id])
 		@recept_logs = ReceptLog.where(user_id: @user.id).all.includes(:purchase_data_logs)
 	end
 
