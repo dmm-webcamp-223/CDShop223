@@ -1,4 +1,5 @@
 class AdminPackagesController < ApplicationController
+  before_action :authenticate_admin!
     def new
       @artists = Artist.all
       @labels = Label.all
@@ -31,9 +32,9 @@ class AdminPackagesController < ApplicationController
     @package = Package.find(params[:id])
      if @package.update(package_params)
      redirect_to package_path(@package.id), notice:''
-    else
+     else
      render :edit
-   end
+     end
 	end
 
 	def edit

@@ -11,8 +11,8 @@ class CartItemsController < ApplicationController
 
   def destroy
   end
-  
-  
+
+
   private
     def shipaddress_params
       params.require(:ship_adress).permit(:posal_code, :shipping_add)

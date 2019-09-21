@@ -22,7 +22,11 @@
 		<td><%= purchase_data_log.numbers %>個<br>
 			<%= recept_log.total %>円</td>
 		<td><%= recept_log.delivering_adddress %></td>
-		<td><%= recept_log.delivered_status %></td>
+			<% if recept_log.delivered_status %>
+				<td><span class="label label-success">配送済み</span></td>
+			<% else %>
+				<td><span class="label label-danger">未発送</span></td>
+			<% end %>
 	</tr>
 </table>
 

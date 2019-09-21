@@ -11,6 +11,7 @@
                     <th>日付</th>
               </tr>
         </thead>
+            <h1><u>注文受付一覧</u></h1><br>
               <% @recept_logs.each do |log| %>
               <tr>
                 <% user = @users.find(log.user_id) %>
@@ -24,9 +25,8 @@
                     <% end %>
                     <th><%= log.total + 500 %></th>
                     <th><%= link_to log.created_at.to_s(:datetime), order_log_path(log) %></th>
-
-                    <%= form_for log, url: user_cart_recept_log_path(current_user.id,current_cart.id,log.id), controller: "order_logs" ,action: "update" do |form| %>
-                      <th><%= form.check_box :delivered_status %></th>
+                    <%= form_for log, url: user_cart_recept_log_path(user.id, user.id, log.id) do |form| %>
+                      <th><%= form.check_box :delivered_status, {}, checked_value = "true", unchecked_value = "false" %></th>
                       <th><%= form.submit "更新" %></th>
                     <% end %>
              </tr>

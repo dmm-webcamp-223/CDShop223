@@ -1,4 +1,5 @@
 class OrderLogsController < ApplicationController
+    before_action :authenticate_admin!
   def index
     @recept_logs=ReceptLog.all.reverse
     @users=User.with_deleted
