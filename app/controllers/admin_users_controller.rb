@@ -1,11 +1,11 @@
 class AdminUsersController < ApplicationController
 	def index
-		@users = User.all
+		@users = User.search(params[:search])
 	end
 
 	def show
-		@user = User.find(params[:id])
-		@recept_logs = ReceptLog.where(user_id: @user.id).all.includes(:purchase_data_logs)
+		@user = User.with_deleted.find(params[:id])
+		@recept_logs = ReceptLog.where(user_id: @user.id).includes(:purchase_data_logs).group_by{|recept_log| recept_log.created_at.strftime('%Y/%m')}.all
 	end
 
 	def update
@@ -26,13 +26,6 @@ class AdminUsersController < ApplicationController
 	def edit
 		@user = User.find(params[:id])
 	end
-  
-    def destroy
-        user=User.find(params[:id])
-        user.delete
-        redirect_to admin_users_path
-    end
-  
 	private
 	def user_parms
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)

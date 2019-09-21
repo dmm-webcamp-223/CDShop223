@@ -1,8 +1,5 @@
 <div class="container">
 	<h2>ユーザー詳細</h2>
-	<% if flash[:notice] %>
-	<p><%= flash[:notice]%></p>
-	<% end %>
 	<table border="1">
 		<td><%= @user.kanzi_fullname %></td>
 		<td><%= @user.kana_fullname %></td>
@@ -24,14 +21,14 @@
 	<% else %>
 	<% @recept_logs.each do |recept_log| %>
 	<% recept_log.purchase_data_logs.each do |purchase_data_log| %>
-	<p><%= purchase_data_log.created_at.to_s(:datetime) %></p>
+	<p><%= purchase_data_log.created_at.to_s(:month) %></p>
 	<table border="1" style="border-collapse: collapse">
 		<tr>
-			<td class="col-xs-1"><%= purchase_data_log.created_at.to_s(:datetime) %></td>
+			<td class="col-xs-1"><%= purchase_data_log.created_at.to_s(:date) %></td>
 			<td class="col-xs-1"><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
 			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
-				<%= recept_log.total %>円</td>
+				<%= purchase_data_log.purchase_price * purchase_data_log.numbers %>円</td>
 			<td class="col-xs-4"><%= recept_log.delivering_adddress %></td>
 			<td class="col-xs-1"><%= recept_log.delivered_status %></td>
 		</tr>

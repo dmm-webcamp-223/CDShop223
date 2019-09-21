@@ -40,7 +40,7 @@
       <li><%= link_to "入荷履歴", ship_data_logs_path %></li>
       <li><%= form_tag(packages_path, :method => 'get') do %>
         <%= text_field_tag :search %>
-        <%= submit_tag 'Search', :name => nil %>
+        <%= submit_tag "商品の検索", :name => nil %>
         <% end %>
       </li>
     </nav>
@@ -51,7 +51,7 @@
       <li><%= link_to "マイページ", user_path(current_user.id) %></li>
       <li><%= form_tag(packages_path, :method => 'get') do %>
         <%= text_field_tag :search %>
-        <%= submit_tag 'Search', :name => nil %>
+        <%= submit_tag "商品の検索", :name => nil %>
         <% end %>
       </li>
     </nav>
@@ -62,7 +62,7 @@
       <li><%= link_to "新規登録", new_user_registration_path %></li>
       <li><%= form_tag(packages_path, :method => 'get') do %>
         <%= text_field_tag :search %>
-        <%= submit_tag '検索', :name => nil %>
+        <%= submit_tag "商品の検索", :name => nil %>
         <% end %>
       </li>
     </nav>

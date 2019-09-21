@@ -30,7 +30,7 @@ class AdminPackagesController < ApplicationController
 	def update
     @package = Package.find(params[:id])
      if @package.update(package_params)
-     redirect_to package_path(@package.id), notice:''
+     redirect_to admin_package_path(@package.id), notice:''
     else
      render :edit
    end
