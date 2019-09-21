@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recept_logs = ReceptLog.where(user_id: current_user.id).all.includes(:purchase_data_logs)
+    
+    month[]=ReceptLog.pluck(created_at).strftime("%Y-%m-%d %H:%M")
+    month.uniq      
   end
 
   private

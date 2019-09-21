@@ -12,12 +12,12 @@
                                 <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
                             </div>
                             <div class="package_name col-lg-3 ">
-                                <%= c.package.title %>
+                                <h3><%= c.package.title %></h3>
                                 <%= form_for(@cart_number, :html => {:class => "form"}, url: package_update_item_path(c.package.id)) do |f| %>
                                     <h4 id="input_q">数量を入力</h4>
                                         <%= f.number_field :quantity %>
                                         <%= f.submit '確定'%>
-                                            <p id="buy_q">購入個数は<%= c.quantity %>個</p>
+                                            <h2 id="buy_q">購入個数は<%= c.quantity %>個</h2>
                                 <% end %>
                             <div class="price">
                                   <%= c.package.price %>円

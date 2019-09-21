@@ -5,6 +5,9 @@
 .bxslider {
  height:500px;
 }
+  
+
+
 </style>
 
 <div class="container packages_in">
@@ -23,7 +26,7 @@
 					<div class="packages">
 				    	<% @packages.each do |package| %>
 								<% if package.disc_status %>
-				    		<div class="col-xs-2">
+				    		<div class="col-xs-3">
 				      		<%= link_to package_path(package.id) do%>
 				        		<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
 				      		<% end %>

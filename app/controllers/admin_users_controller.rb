@@ -2,10 +2,11 @@ class AdminUsersController < ApplicationController
 	  before_action :authenticate_admin!
 	def index
 		@users = User.page(params[:page]).reverse_order
+
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.with_deleted.find(params[:id])
 		@recept_logs = ReceptLog.where(user_id: @user.id).all.includes(:purchase_data_logs)
 	end
 
@@ -18,16 +19,17 @@ class AdminUsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		@user = User.find(params[:id])
+		user.destroy
+		redirect_to admin_users_path
+	end
+
 	def edit
 		@user = User.find(params[:id])
 	end
 
-    def destroy
-        user=User.find(params[:id])
-        user.delete
-        redirect_to admin_users_path
-    end
-
+ 
 	private
 	def user_parms
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)

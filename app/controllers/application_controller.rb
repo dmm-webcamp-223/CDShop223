@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @users = User.search(params[:search])
     @packages = Package.search(params[:search])
   end
 
