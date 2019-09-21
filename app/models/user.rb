@@ -34,14 +34,23 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
+
       where(["name_kanzi_sei LIKE? OR name_kanzi_mei LIKE? OR name_kana_sei LIKE? OR name_kana_mei LIKE?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       with_deleted
+
     end
   end
-
+  
+  
+  #クリエイトアットを月に変える
+  def month
+  end
+  
+  
 end
 
+#フルネイムメソッド
 class FullName
   attr_reader :family_name, :given_name
 
