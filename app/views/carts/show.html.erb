@@ -1,6 +1,6 @@
 
 
-<div style="background-image:url(<%= asset_path "cart.jpg" %>)" >
+<div class="full">
     <div class="container carts">
         <div class="container">
             <div class="row cart">
@@ -8,10 +8,10 @@
                 <h1><span class="label label-danger"><%= notice %></span></h1><br>
                     <% @cart_items.each do |c| %>
                         <div class="row cart">
-                            <div class="image col-lg-4">
+                            <div class="image col-lg-3">
                                 <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
                             </div>
-                            <div class="package_name col-lg-3 ">
+                            <div class="package_name col-lg-4 ">
                                 <h3><%= c.package.title %></h3>
                                 <%= form_for(@cart_number, :html => {:class => "form"}, url: package_update_item_path(c.package.id)) do |f| %>
                                     <h4 id="input_q">数量を入力</h4>
@@ -25,13 +25,13 @@
                             <button type="button" class="btn btn-danger">
                                 <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn-delete" %> 
                             </button>
-                            <div class="clearfix col-lg-5"></div>
+                            
                             </div>
                         </div>
                                 <% end %>
                  
     
-                        <div class="row total_packages col-lg-4">
+                        <div class="total_packages col-lg-5">
                             <h2>購入する商品は</h2>
                                 <%= current_cart.cart_items.count %>品
                         <div class="total_cost">
