@@ -1,4 +1,4 @@
-<div style="background-image:url(<%= asset_path "purchase.jpg" %>)" >
+<div class="full2">
 <div class="container purchase_p">
   <%= form_with model: @recept_log, url: user_cart_recept_logs_path(current_user.id,current_cart.id), method: :post, local: true do |form| %>
 
@@ -61,4 +61,4 @@
     </div>
   <% end %>
 </div>
-
+</div>
