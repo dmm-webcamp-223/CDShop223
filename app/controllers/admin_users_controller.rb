@@ -8,9 +8,7 @@ class AdminUsersController < ApplicationController
 
 	def show
 		@user = User.with_deleted.find(params[:id])
-
-		@recept_logs = ReceptLog.where(user_id: @user.id).includes(:purchase_data_logs).group_by{|recept_log| recept_log.created_at.strftime('%Y/%m')}.all
-
+		@recept_logs = @user.recept_logs.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
 	end
 
 	def update
@@ -31,7 +29,7 @@ class AdminUsersController < ApplicationController
 	def edit
 		@user = User.find(params[:id])
 	end
-  
+
 	private
 	def user_parms
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)
