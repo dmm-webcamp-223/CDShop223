@@ -25,11 +25,11 @@
                     <% end %>
                     <th><%= log.total + 500 %></th>
                     <th><%= link_to log.created_at.to_s(:datetime), order_log_path(log) %></th>
-                    <%= form_for log, url: user_cart_recept_log_path(user.id, user.id, log.id) do |form| %>
+                    <%= form_for log, url: user_cart_recept_log_path(user_id:user.id, cart_id:user.id, id: log.id) do |form| %>
                       <th><%= form.check_box :delivered_status, {}, checked_value = "true", unchecked_value = "false" %></th>
                       <th><%= form.submit "更新" %></th>
                     <% end %>
-                
+
              </tr>
              <% end %>
              <%= paginate @recept_logs, class: "paginate" %>
