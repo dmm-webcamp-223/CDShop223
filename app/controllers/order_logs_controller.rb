@@ -3,11 +3,20 @@ class OrderLogsController < ApplicationController
   def index
     @recept_logs=ReceptLog.page(params[:page]).reverse_order
     @users=User.with_deleted
+    @times = ReceptLog.pluck(:created_at)
   end
 
   def show
     @logs = PurchaseDataLog.where(recept_log_id: params[:id])
   end
+
+  def update
+    @log = ReceptLog.find(params[:id])
+    @log.delivered_status == true
+    @log.update(delivered_status: true)
+    redirect_to order_logs_path
+  end
+
 
 
     private

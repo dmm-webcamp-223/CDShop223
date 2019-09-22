@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   resources :admin_users
   resources :admin_packages
   resources :packages, only: [:index, :show] do
-    resources :cart_items, only: [:create, :update, :destroy]
+    resources :cart_items, only: [:create, :update]
     post '/add_item' => 'carts#add_item'
-    post '/update_item' => 'carts#update_item'
     delete '/delete_item' => 'carts#delete_item'
   end
 
@@ -27,7 +26,7 @@ Rails.application.routes.draw do
   resources :ship_adresses, only: [:create]
 
 
-  resources :order_logs, only: [:index, :update, :show, :update]
+  resources :order_logs, only: [:index, :update, :show]
 
   resources :users, only: [:index, :edit, :update, :show, :destroy] do
 

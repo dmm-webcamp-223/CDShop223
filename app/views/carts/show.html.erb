@@ -13,7 +13,7 @@
                             </div>
                             <div class="package_name col-lg-3 ">
                                 <h3><%= c.package.title %></h3>
-                                <%= form_for(@cart_number, :html => {:class => "form"}, url: package_update_item_path(c.package.id)) do |f| %>
+                                <%= form_for c, url: package_cart_item_path(params[:id], c.id) do |f| %>
                                     <h4 id="input_q">数量を入力</h4>
                                         <%= f.number_field :quantity %>
                                         <%= f.submit '確定'%>
@@ -23,30 +23,30 @@
                                   <%= c.package.price %>円
                             </div>
                             <button type="button" class="btn btn-danger">
-                                <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn-delete" %> 
+                                <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn-delete" %>
                             </button>
                             <div class="clearfix col-lg-5"></div>
                             </div>
                         </div>
                                 <% end %>
-                 
-    
+
+
                         <div class="row total_packages col-lg-4">
                             <h2>購入する商品は</h2>
                                 <%= current_cart.cart_items.count %>品
                         <div class="total_cost">
                                 <%= current_cart.cart_items.sum(:total_cost) %>円
                         </div>
-                        
+
                                 <% if @cart_items.blank? %>
                                 <% else %>
                                 <button type="button" class="btn btn-success">
                                 <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id),class:"btn-buy" %>
                                 </button>
                                 <% end %>
-                      
-                        </div> 
-            </div>    
+
+                        </div>
+            </div>
         </div>
     </div>
 </div>
