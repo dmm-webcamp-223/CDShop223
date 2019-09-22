@@ -41,10 +41,7 @@ class User < ApplicationRecord
 
     end
   end
-  
 
-  
-  
 end
 
 #フルネイムメソッド
