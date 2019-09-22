@@ -3,7 +3,6 @@
 	<h1>マイページ</h1>
 	<%= link_to "ユーザー編集", edit_user_registration_path, class:"btn btn-success" %>
 	<hr>
-	<% end %>
 	<strong>購入履歴</strong>
 
 	<% if @recept_logs.blank? %>
@@ -18,7 +17,7 @@
 			<td class="col-xs-1"><%= key %></td>
 			<td class="col-xs-1"><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
-			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
+			<td class="col-xs-3"><%= purchase_data_log.numbers %>個</td><br>
 				<%= purchase_data_log.purchase_price * purchase_data_log.numbers %>
 				<td class="col-xs-4"><%= recept.delivering_adddress %></td>
 				<% if recept.delivered_status %>

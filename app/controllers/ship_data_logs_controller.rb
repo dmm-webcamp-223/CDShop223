@@ -24,12 +24,13 @@ class ShipDataLogsController < ApplicationController
 #----------------------------------- 入荷枚数の変動-----------------------------------
   def update
     @log = ShipDataLog.find(params[:id])
+       @log.update(ship_data_log_params)
     if @log.shiped_number.to_i >= 1
-       @log.arrival_status = true
        @log.update(ship_data_log_params)
         pack = Package.find_by(id: @log.package_id)
         stock = @log.shiped_number.to_i + pack.disc_stock.to_i
         pack.update(disc_stock: stock)
+        @log.update(arrival_status: true)
         redirect_to admin_package_path(@log.package)
     else
        @log.arrival_status = false

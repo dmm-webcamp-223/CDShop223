@@ -1,4 +1,4 @@
-
+<div class="full2">
 <div style="background-image:url(<%= asset_path "purchase.jpg" %>) fixed;" >
   <div class="container purchase_p">
     <%= form_with model: @recept_log, url: user_cart_recept_logs_path(current_user.id,current_cart.id), method: :post, local: true do |form| %>
@@ -26,15 +26,15 @@
     <h2 id="check">商品の確認</h2>
     <div class="row check-p">
       <% @cart_items.each do |f| %>
-      <div class="name-pu col-lg-3">
+      <div class="name-pu col-lg-6">
         <h4>商品名</h4>
         <%= f.package.title %>
       </div>
-      <div class="quantity-pu col-lg-3 col-lg-offset-1">
+      <div class="quantity-pu col-lg-3">
         <h4>商品の個数</h4>
         <%= f.quantity %>
       </div>
-      <div class="total_pu col-lg-3 col-lg-offset-1">
+      <div class="total_pu col-lg-3">
         <h4>税込価格</h4>
         <%= (f.total_cost*1.08).to_i %>
       </div>
