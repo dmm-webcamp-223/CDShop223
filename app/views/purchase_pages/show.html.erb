@@ -38,7 +38,7 @@
       <div class="total_pu col-lg-3 ">
 
         <h4>税込価格</h4>
-        <%= (f.total_cost*1.08).to_i %>
+        <%= (f.total_cost*1.08).to_i %>円
       </div>
       <% end %>
     </div>
@@ -52,11 +52,11 @@
       <div class="payment-pu col-lg-5 col-lg-offset-2">
         <h2>請求額</h2>
         <h4>商品代金</h4>
-        <%= @cart_items.sum(:total_cost) %>
+        <%= @cart_items.sum(:total_cost) %>円
         <h4>送料</h4>
         <p id="send">500円</p>
         <h4>合計税込</h4>
-        <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>
+        <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>円
 
       </div>
     </div>
