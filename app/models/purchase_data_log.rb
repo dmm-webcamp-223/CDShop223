@@ -1,6 +1,6 @@
 class PurchaseDataLog < ApplicationRecord
 	belongs_to :recept_log, -> {with_deleted}
-	belongs_to :package
+	belongs_to :package, -> {with_deleted}
 
     acts_as_paranoid
 

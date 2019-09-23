@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
       @user = User.with_deleted.find(params[:id])
       @recept_logs = @user.recept_logs.with_deleted.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
+      @package_deleted = Package.with_deleted
     
       if @user.id != current_user.id
         redirect_to user_path(current_user.id)
