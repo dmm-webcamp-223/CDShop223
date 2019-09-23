@@ -8,9 +8,18 @@ class CartItemsController < ApplicationController
 
   # カート詳細画面から、「更新」を押した時のアクション
   def update
+
     item = CartItem.find(params[:id])
-    item.update!(cart_item_params)
-     redirect_to user_cart_path(current_user.id,current_cart.id)
+    pack = Package.find(params[:package_id])
+    pack = pack.disc_stock
+    number = params[:cart_item][:quantity]
+    stock = pack - number.to_i
+    if stock >= 0
+      item.update(cart_item_params)
+      redirect_to user_cart_path(current_user.id,current_cart.id)
+    else
+      redirect_to user_cart_path(current_user.id,current_cart.id), notice:"在庫数以上の注文はできません"
+    end
   end
 
   def destroy
