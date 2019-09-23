@@ -3,7 +3,7 @@ class OrderLogsController < ApplicationController
   def index
     @recept_logs=ReceptLog.page(params[:page]).reverse_order
     @users=User.with_deleted
-    @times = ReceptLog.pluck(:created_at)
+    @times = ReceptLog.with_delted.pluck(:created_at)
   end
 
   def show

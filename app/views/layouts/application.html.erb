@@ -10,19 +10,18 @@
 </head>
 
 <body>
-  
   <div class="nav navbar-inverse">
     <div class="container-fluid">
       <h1 class="text-center center-block text-muted">CDShop 223</h1>
 
       <% if admin_signed_in? %>
       <nav class="nav navbar-nav navbar-left">
-        <li class="text-muted">管理者としてログインしています</li>
+        <li class="text-muted"><%= link_to "管理者としてログインしています", edit_admin_registration_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
       </nav>
       <% elsif user_signed_in? %>
       <nav  class="nav navbar-nav navbar-left" >
-       <li class="text-muted"><%= current_user.kanzi_fullname %>でログインしています</li>
+       <li class="text-muted"><%= link_to "#{current_user.kanzi_fullname}でログインしています", edit_user_registration_path %></li>
        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: "ログアウトしました。" %></li>
      </nav>
      <% else %>
