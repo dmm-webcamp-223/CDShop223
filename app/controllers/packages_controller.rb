@@ -1,5 +1,5 @@
 class PackagesController < ApplicationController
-  before_action :authenticate_user!
+
   def index
   #売れた個数ランキング処理
     purchasedata = PurchaseDataLog.week
@@ -10,7 +10,7 @@ class PackagesController < ApplicationController
     end
     
    
-    @packages_week = Package.order('week DESC').limit(6)
+    @packages_week = Package.order('week DESC').limit(4)
   #ここまで
     
     @packages = Package.page(params[:page]).reverse_order.search(params[:search])
