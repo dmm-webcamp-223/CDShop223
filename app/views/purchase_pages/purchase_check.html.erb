@@ -1,32 +1,34 @@
 <div style="background-image:url(<%= asset_path "purchasecheck.jpg" %>)" >
 
-<div class="container purchase_c">
-  <div class="order_comfirmation clearfix">
-    <div class="h1_c"><h1>注文内容の確認</h1></div>
+  <div class="container purchase_c">
+    <div class="order_comfirmation clearfix">
+      <div class="h1_c"><h1>注文内容の確認</h1></div>
       <div class="row">
         <h1><span class="label label-danger"><%= notice %></span></h1><br>
-              <div class="your_order_add col-lg-6">
-                  <h2>お届け先</h2>
-                      <h3>郵便番号</h3>
-                          <%= @recept_log.postal_code %>
-                      <h3>住所</h3>
-                          <%= @recept_log.delivering_adddress %>
+        <div class="your_order_add col-lg-6">
+          <h2>お届け先</h2>
+          <h3>郵便番号</h3>
+          <%= @recept_log.postal_code %>
+          <h3>住所</h3>
+          <%= @recept_log.delivering_adddress %>
+        </div>
 
-              </div>
 
-              <div class="total_costs col-lg-4 col-lg-offset-1 " >
-                      <h2>合計金額</h2>
-                          <h3>商品代金</h3>
-                              <%= @cart_items.sum(:total_cost) %>円
-                          <h3>送料</h3>
-                              <p>500円</p>
-                      <h3>税込合計額</h3>
-                              <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>円
-              </div>
+        <div class="total_costs col-lg-4 col-lg-offset-1 " >
+          <h2>合計金額</h2>
+          <h3>商品代金</h3>
+          <%= @cart_items.sum(:total_cost) %>円
+          <h3>送料</h3>
+          <p>500円</p>
+          <h3>税込合計額</h3>
+          <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>円
+        </div>
+
       </div>
 
       <div class="row">
         <div class="your_order_item col-lg-6  clearfix">
+
             <h2>商品内容</h2>
               <table class="table">
                 <thead>
@@ -56,6 +58,7 @@
         <div class="col-lg-8">
             <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch,id: "confirm",class:"btn btn-default btn_com"  %>
         
+
 
             <%= link_to '戻る', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :delete,id: "back",class:"btn btn-default btn_back "  %>
         </div>

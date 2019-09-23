@@ -1,7 +1,6 @@
 class AdminUsersController < ApplicationController
 	  before_action :authenticate_admin!
 	def index
-
 		@users = User.with_deleted.search(params[:search])
 
 	end
@@ -12,7 +11,7 @@ class AdminUsersController < ApplicationController
 	end
 
 	def update
-		@user = User.find(params[:id])
+		@user = User.with_deleted.find(params[:id])
 		if @user.update(user_params)
 			redirect_to user_path(@user.id), notice: "You have updated successfully."
 		else
@@ -27,7 +26,7 @@ class AdminUsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = User.with_deleted.find(params[:id])
 	end
 
 	private

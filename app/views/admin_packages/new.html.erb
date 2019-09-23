@@ -4,11 +4,11 @@
   <div class = "row">
     <div class = "col-lg-3" >
       <h4>アーティストを選ぶ</h4>
-      <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %>
+      <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %><%= link_to "アーティストの追加", new_artist_path %>
       <h4>レーベルを選ぶ</h4>
-      <%= f.collection_select :label_id, @labels, :id, :label, include_blank: 'レーベル' %>
+      <%= f.collection_select :label_id, @labels, :id, :label, include_blank: 'レーベル' %><%= link_to "レーベルの追加", new_label_path %>
       <h4>ジャンルを選ぶ</h4>
-      <%= f.collection_select :genre_id, @genres, :id, :category, include_blank: 'ジャンル' %>
+      <%= f.collection_select :genre_id, @genres, :id, :category, include_blank: 'ジャンル' %><%= link_to "ジャンルの追加", new_genre_path %>
     </div>
     <div class ="col-lg-3">
       <h4>商品名</h4>
