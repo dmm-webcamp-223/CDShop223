@@ -1,6 +1,24 @@
 class PackagesController < ApplicationController
+  before_action :authenticate_user!
   def index
+  #売れた個数ランキング処理
+    purchasedata = PurchaseDataLog.week
+    package = Package.all
+    package.each do |f|
+      f.week = purchasedata.where(package_id: f.id).sum(:numbers)
+      f.save
+    end
+    
+   
+    @packages_week = Package.order('week DESC').limit(6)
+  #ここまで
+    
     @packages = Package.page(params[:page]).reverse_order.search(params[:search])
+
+    
+   # @purchase_numbers=@purchasedata.group(:package_id).sum(:numbers)
+
+    
   end
 
   def show

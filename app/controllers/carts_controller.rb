@@ -7,11 +7,20 @@ class CartsController < ApplicationController
 
   def show
     @cart_items = current_cart.cart_items
-
     @cart_items.each do |c|
       c.total_cost = (c.package.price * c.quantity)
       c.save
     end
+    
+     cart_pass = Cart.find(params[:id])
+     user_pass = User.find_by(id: params[:user_id])
+       if current_cart.id != cart_pass.id
+       redirect_to user_cart_path(current_user.id, current_cart.id)
+       else if current_user.id != user_pass.id
+       redirect_to user_cart_path(current_user.id, current_cart.id)
+       end
+       end
+    
   end
 
   # 商品詳細画面から、カートに入れるを押した時のアクション

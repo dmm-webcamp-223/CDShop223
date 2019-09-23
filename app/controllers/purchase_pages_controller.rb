@@ -1,10 +1,20 @@
 class PurchasePagesController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
       @user=User.find(params[:user_id])
       @ship_address= ShipAdress.where(user_id: params[:user_id])
       @cart_items = CartItem.where(cart_id: params[:cart_id])
       @recept_log = ReceptLog.new
       @how_to_pay = HowToPay.new
+    
+      cart_pass = Cart.find(params[:cart_id])
+       if current_cart.id != cart_pass.id
+            redirect_to user_cart_purchase_page_path(current_user.id, current_cart.id)
+       else if @user.id != current_user.id
+            redirect_to user_cart_purchase_page_path(current_user.id, current_cart.id)
+       end
+       end
   end
 
   def purchase_check
@@ -12,6 +22,13 @@ class PurchasePagesController < ApplicationController
     @cart_items=CartItem.where(cart_id: params[:cart_id])
     @ship_address=ShipAdress.where(user_id: params[:user_id])
     @recept_log = ReceptLog.order('id DESC').find_by(user_id: params[:user_id])
+    cart_pass = Cart.find(params[:cart_id])
+       if current_cart.id != cart_pass.id
+            redirect_to purchase_check_user_cart_purchase_pages_path(current_user.id,current_cart.id)
+       else if @user.id != current_user.id
+            redirect_to purchase_check_user_cart_purchase_pages_path(current_user.id,current_cart.id)
+       end
+       end
   end
 
   def new
@@ -33,6 +50,7 @@ class PurchasePagesController < ApplicationController
      @recept_log = ReceptLog.order('id DESC').find_by(user_id: params[:user_id])
 
      @recept_log.total = @cart_items.sum(:total_cost)*1.08
+     @recept_log.total_plus_postage = @cart_items.sum(:total_cost)*1.08 + 500
      @recept_log.postage = 500
     if @recept_log.save
      @recept_log_S = ReceptLog.order('id DESC').find_by(user_id: params[:user_id])

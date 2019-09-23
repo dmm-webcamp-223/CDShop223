@@ -15,8 +15,10 @@
                                 <h3><%= c.package.title %></h3>
                                 <%= form_for c, url: package_cart_item_path(params[:id], c.id) do |f| %>
                                     <h4 id="input_q">数量を入力</h4>
+                                      <div class="form_color">
                                         <%= f.number_field :quantity %>
                                         <%= f.submit '確定'%>
+                                      </div>
                                             <h2 id="buy_q">購入個数は<%= c.quantity %>個</h2>
                                 <% end %>
                             <div class="price">
