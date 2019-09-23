@@ -49,6 +49,7 @@ class AdminPackagesController < ApplicationController
 	def destroy
       package = Package.find(params[:id])
       package.destroy
+      redirect_to admin_packages_path
 	end
 
     private

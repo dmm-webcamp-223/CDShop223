@@ -13,9 +13,12 @@
 	</table>
 
 	<%= link_to "編集", edit_admin_user_path, class: "btn btn-success btn-sm" %>
+    <% unless @user.deleted_at? %>
 	<%= link_to "削除", admin_user_path, class: "btn btn-danger btn-sm", method: :delete, "data-comfirm" => "よろしいですか？" %>
-	<%= link_to "ユーザーを復活", admin_restore, class: "btn btn-danger btn-sm" %>
-	<br>
+    <% else %>
+    <%= link_to "アカウント復元", admin_restore_path(params[:id]), class: "btn btn-danger btn-sm", method: :patch, "data-confirm" => "よろしいですか？" %>
+    <% end %>
+    <br>
 	<hr>
 
 	<strong>購入履歴</strong>
