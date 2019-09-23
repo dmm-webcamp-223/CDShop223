@@ -1,50 +1,42 @@
-
-
 <div class="full">
     <div class="container carts">
         <div class="container">
             <div class="row cart">
                 <h1>Your Cart</h1>
                 <h1><span class="label label-danger"><%= notice %></span></h1><br>
-                    <% @cart_items.each do |c| %>
-                        <div class="row cart">
-                            <div class="image col-lg-3">
-                                <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
-                            </div>
-                            <div class="package_name col-lg-4 ">
-                                <h3><%= c.package.title %></h3>
-                                <%= form_for c, url: package_cart_item_path(c.package.id, c.id) do |f| %>
-                                    <h4 id="input_q">数量を入力</h4>
-                                      <div class="form_color">
-                                        <%= f.number_field :quantity %>
-                                        <%= f.submit '確定'%>
-                                      </div>
-                                            <h2 id="buy_q">購入個数は<%= c.quantity %>個</h2>
-                                <% end %>
-                            <div class="price">
-                                  <%= c.package.price %>円
-                            </div>
-                                <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn btn-danger btn-delete" %>
-
-                            </div>
+                <% @cart_items.each do |c| %>
+                <div class="row cart">
+                    <div class="image col-lg-3">
+                        <%= attachment_image_tag c.package, :disc_image, :fill,200,200 %>
+                    </div>
+                    <div class="package_name col-lg-4 ">
+                        <h3><%= c.package.title %></h3>
+                        <%= form_for c, url: package_cart_item_path(c.package.id, c.id) do |f| %>
+                        <h4 id="input_q">数量を入力</h4>
+                        <div class="form_color">
+                            <%= f.number_field :quantity %>
+                            <%= f.submit '確定'%>
                         </div>
-                                <% end %>
-
-
-                        <div class="total_packages col-lg-5">
-
-                            <h2>購入する商品は</h2>
-                                <%= current_cart.cart_items.count %>品
-                        <div class="total_cost">
-                                <%= current_cart.cart_items.sum(:total_cost) %>円
+                        <h2 id="buy_q">購入個数は<%= c.quantity %>個</h2>
+                        <% end %>
+                        <div class="price">
+                            <%= c.package.price %>円
                         </div>
-
-                                <% if @cart_items.blank? %>
-                                <% else %>
-                                <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id),class:"btn btn-success btn-buy" %>
-                                <% end %>
-
-                        </div>
+                        <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn btn-danger btn-delete" %>
+                    </div>
+                </div>
+                <% end %>
+                <div class="total_packages col-lg-5">
+                    <h2>購入する商品は</h2>
+                    <%= current_cart.cart_items.count %>品
+                    <div class="total_cost">
+                        <%= current_cart.cart_items.sum(:total_cost) %>円
+                    </div>
+                    <% if @cart_items.blank? %>
+                    <% else %>
+                    <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id),class:"btn btn-success btn-buy" %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

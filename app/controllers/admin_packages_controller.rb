@@ -46,8 +46,8 @@ class AdminPackagesController < ApplicationController
     @genres = Genre.all
 	end
 
-	def destory
-      package = Pckage.find(params[:id])
+	def destroy
+      package = Package.find(params[:id])
       package.destroy
 	end
 
