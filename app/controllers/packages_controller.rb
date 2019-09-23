@@ -2,7 +2,7 @@ class PackagesController < ApplicationController
 
   def index
   #売れた個数ランキング処理
-    purchasedata = PurchaseDataLog.week
+    purchasedata = PurchaseDataLog.with_deleted.week
     package = Package.all
     package.each do |f|
       f.week = purchasedata.where(package_id: f.id).sum(:numbers)

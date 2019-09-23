@@ -11,7 +11,7 @@
 	<% @recept_logs.each do |key,recept_log| %>
 	<%= key %>
 	<% recept_log.each do |recept| %>
-	<% recept.purchase_data_logs.each do |purchase_data_log| %>
+	<% recept.purchase_data_logs.with_deleted.each do |purchase_data_log| %>
 	<table border="1" style="border-collapse: collapse">
 		<tr>
 			<td class="col-xs-1"><%= purchase_data_log.created_at.to_s(:date) %></td>
@@ -19,6 +19,7 @@
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
 
 			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
+
               <%= purchase_data_log.purchase_price * purchase_data_log.numbers %>円</td>
 				<td class="col-xs-4"><%= recept.delivering_adddress %></td>
 				<% if recept.delivered_status %>

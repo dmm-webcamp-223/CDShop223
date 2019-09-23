@@ -13,6 +13,7 @@
           <%= @recept_log.delivering_adddress %>
         </div>
 
+
         <div class="total_costs col-lg-4 col-lg-offset-1 " >
           <h2>合計金額</h2>
           <h3>商品代金</h3>
@@ -22,44 +23,46 @@
           <h3>税込合計額</h3>
           <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>円
         </div>
+
       </div>
 
       <div class="row">
         <div class="your_order_item col-lg-6  clearfix">
-          <h2>商品内容</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>商品名</th>
-                <th>個数</th>
-                <th>価格</th>
-              </tr>
-            </thead>
-            <% @cart_items.each do |f| %>
-            <tr>
-              <div class="package_title">
-                <th><%= f.package.title %></th>
-              </div>
-              <div class="package_quantity">
-                <th><%= f.quantity %></th>
-              </div>
-              <div class="package_price">
-                <th><%= f.package.price %>円</th>
-              </div>
-            </tr>
-          </div>
-          <% end %>
+
+            <h2>商品内容</h2>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>商品名</th>
+                    <th>個数</th>
+                    <th>価格</th>
+                  </tr>
+                </thead>
+                <% @cart_items.each do |f| %>
+                <tr>
+                    <div class="package_title">
+
+                        <th><%= f.package.title %></th>
+                    </div>
+                    <div class="package_quantity">
+                        <th><%= f.quantity %></th>
+                    </div>
+                    <div class="package_price">
+                        <th><%= f.package.price %>円</th>
+                    </div>
+                </tr>
+          
+                <% end %>
         </table>
-      </div>
-      <button class="btn btn-default btn_com col-lg-offset-2">
-        <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch,id: "confirm"  %>
-      </button>
+       </div>
+        <div class="col-lg-8">
+            <%= link_to '注文を確定する', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :patch,id: "confirm",class:"btn btn-default btn_com"  %>
+        
 
-      <button class="btn btn-default btn_back ">
-        <%= link_to '戻る', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :delete,id: "back"  %>
-      </button>
 
+            <%= link_to '戻る', user_cart_purchase_pages_path(current_user.id,current_cart.id),method: :delete,id: "back",class:"btn btn-default btn_back "  %>
+        </div>
+     
     </div>
-
   </div>
 </div>
