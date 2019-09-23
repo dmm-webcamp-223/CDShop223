@@ -1,44 +1,41 @@
 <div class = "container">
   <h1><u>新規商品の追加</u></h1>
-                   <%= form_for @package, url: admin_package_path(@package) do |f| %>
+  <%= form_for @package, url: admin_package_path(@package) do |f| %>
 
-                      <div class = "row">
-                      <div class = "col-lg-3" >
-                        <h4>アーティストを選ぶ</h4>
-                        <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %>
-                        <h4>レーベルを選ぶ</h4>
-                        <%= f.collection_select :label_id, @labels, :id, :label, include_blank: 'レーベル' %>
-                        <h4>ジャンルを選ぶ</h4>
-                        <%= f.collection_select :genre_id, @genres, :id, :category, include_blank: 'ジャンル' %>
-                      </div>
-                      <div class ="col-lg-3">
-                        <h4>商品名</h4>
-                        <%= f.text_field :title %>
-                        <h4>税抜き価格</h4>
-                        <%= f.number_field :price %>
-                        <h4>ジャケット画像</h4>
-                        <%= f.attachment_field :disc_image %>
-                      </div>
+  <div class = "row">
+    <div class = "col-lg-3" >
+      <h4>アーティストを選ぶ</h4>
+      <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %>
+      <h4>レーベルを選ぶ</h4>
+      <%= f.collection_select :label_id, @labels, :id, :label, include_blank: 'レーベル' %>
+      <h4>ジャンルを選ぶ</h4>
+      <%= f.collection_select :genre_id, @genres, :id, :category, include_blank: 'ジャンル' %>
+    </div>
+    <div class ="col-lg-3">
+      <h4>商品名</h4>
+      <%= f.text_field :title %>
+      <h4>税抜き価格</h4>
+      <%= f.number_field :price %>
+      <h4>ジャケット画像</h4>
+      <%= f.attachment_field :disc_image %>
+    </div>
 
-                        <div class="package col-lg-6">
-                              <div id="#dogList">
-                                <%= f.fields_for :discs do |t| %>
-                                  <%= render "disc_fields", f: t %>
-                              </div>
-                        <% end %>
-                          <div class = "disc-links">
-                              <%= link_to_add_association "ディスクを追加", f, :discs , class: "btn btn-link", data: {  association_insertion_method: "append" }%>
-                          </div>
+    <div class="package col-lg-6">
+      <div id="#dogList">
+        <%= f.fields_for :discs do |t| %>
+        <%= render "disc_fields", f: t %>
+      </div>
+      <% end %>
+      <div class = "disc-links">
+        <%= link_to_add_association "ディスクを追加", f, :discs , class: "btn btn-link", data: {  association_insertion_method: "append" }%>
+      </div>
 
-                        <div class="actions">
-                          <%= f.submit 'Save',class:"btn_save"%>
-                          <button class="btn btn-danger">
-                          <%= link_to "CDを削除", admin_package_path(@package.id),method: :delete,class:"btn_delete" %>
-                          </button>
-                        </div>
-                            </div>
-                         </div>
-                  <% end %>
-
+      <div class="actions">
+        <%= f.submit 'Save',class:"btn btn-success btn_save"%>
+        <%= link_to "CDを削除", admin_package_path(@package.id),method: :delete,class:"btn btn-danger btn_delete" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
 </div>
