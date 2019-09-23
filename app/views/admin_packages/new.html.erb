@@ -1,14 +1,15 @@
 <div class = "container">
   <h1>新規商品の追加</h1>
+  <%= notice %>
   <%= form_for(@package, url: '/admin_packages') do |f| %>
   <div class = "row">
     <div class = "col-lg-3" >
       <h4>アーティストを選ぶ</h4>
-      <%= f.collection_select :artist_id, @artists, :id, :artist, include_blank: 'アーティスト' %>
+      <%= f.collection_select :artist_id, Artist.all, :id, :artist, include_blank: 'アーティスト' %>
       <h4>レーベルを選ぶ</h4>
-      <%= f.collection_select :label_id, @labels, :id, :label, include_blank: 'レーベル' %>
+      <%= f.collection_select :label_id, Label.all, :id, :label, include_blank: 'レーベル' %>
       <h4>ジャンルを選ぶ</h4>
-      <%= f.collection_select :genre_id, @genres, :id, :category, include_blank: 'ジャンル' %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :category, include_blank: 'ジャンル' %>
     </div>
     <div class ="col-lg-3">
       <h4>商品名</h4>

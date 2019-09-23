@@ -15,7 +15,7 @@
 	<table border="1" style="border-collapse: collapse">
 		<tr>
 			<td class="col-xs-1"><%= purchase_data_log.created_at.to_s(:date) %></td>
-			<td class="col-xs-1"><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
+			<td class="col-xs-1"><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"50x50" %></td>
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
 
 			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
@@ -35,4 +35,3 @@
 		<% end %>
 		<% end %>
 	</div>
-

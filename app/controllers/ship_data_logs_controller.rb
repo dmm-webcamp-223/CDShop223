@@ -2,7 +2,7 @@ class ShipDataLogsController < ApplicationController
     before_action :authenticate_admin!
   def new
     @logs = ShipDataLog.new
-    @packages = Package.all
+    @packages = Package.with_deleted
   end
 
   def index

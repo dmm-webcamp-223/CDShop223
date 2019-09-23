@@ -17,18 +17,18 @@
               <div class="total_costs col-lg-4 col-lg-offset-1 " >
                       <h2>合計金額</h2>
                           <h3>商品代金</h3>
-                              <%= @cart_items.sum(:total_cost) %>
+                              <%= @cart_items.sum(:total_cost) %>円
                           <h3>送料</h3>
                               <p>500円</p>
                       <h3>税込合計額</h3>
-                              <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>
+                              <%= (@cart_items.sum(:total_cost)*1.08+500).to_i %>円
               </div>
       </div>
 
       <div class="row">
         <div class="your_order_item col-lg-6  clearfix">
             <h2>商品内容</h2>
-              <table class="table">
+          <table class="table">
                 <thead>
                   <tr>
                     <th>商品名</th>
@@ -46,7 +46,7 @@
                         <th><%= f.quantity %></th>
                     </div>
                     <div class="package_price">
-                        <th><%= f.package.price %></th>
+                        <th><%= f.package.price %>円</th>
                     </div>
                 </tr>
           </div>

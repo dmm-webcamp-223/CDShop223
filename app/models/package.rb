@@ -13,6 +13,9 @@ class Package < ApplicationRecord
   acts_as_paranoid
   accepts_nested_attributes_for :discs, allow_destroy: true
 
+  validates :title, :price, presence: true
+  validates :artist_id, :label_id, :genre_id, presence: true
+
   def self.search(search)
     if search
       where(["title LIKE ?", "%#{search}%"])

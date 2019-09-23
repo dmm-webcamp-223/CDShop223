@@ -22,10 +22,10 @@ class AdminPackagesController < ApplicationController
 
   def create
       @package = Package.new(package_params)
-      if  @package.save!
+      if  @package.save
           redirect_to admin_packages_path
       else
-          render :new
+          render :new, notice:"記入漏れが在ります"
       end
   end
 

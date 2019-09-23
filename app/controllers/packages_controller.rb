@@ -8,17 +8,17 @@ class PackagesController < ApplicationController
       f.week = purchasedata.where(package_id: f.id).sum(:numbers)
       f.save
     end
-    
-   
+
+
     @packages_week = Package.order('week DESC').limit(4)
   #ここまで
-    
-    @packages = Package.page(params[:page]).reverse_order.search(params[:search])
 
+    @packages = Package.page(params[:page]).reverse_order.search(params[:search])
     
+
    # @purchase_numbers=@purchasedata.group(:package_id).sum(:numbers)
 
-    
+
   end
 
   def show
