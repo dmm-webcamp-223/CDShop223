@@ -24,9 +24,7 @@
                             <div class="price">
                                   <%= c.package.price %>円
                             </div>
-                            <button type="button" class="btn btn-danger">
-                                <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn-delete" %>
-                            </button>
+                                <%= link_to "削除", package_delete_item_path(c.package.id), method: :delete,class:"btn btn-danger btn-delete" %>
 
                             </div>
                         </div>
@@ -43,9 +41,7 @@
 
                                 <% if @cart_items.blank? %>
                                 <% else %>
-                                <button type="button" class="btn btn-success">
-                                <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id),class:"btn-buy" %>
-                                </button>
+                                <%= link_to "購入", user_cart_purchase_page_path(current_user.id, current_cart.id),class:"btn btn-success btn-buy" %>
                                 <% end %>
 
                         </div>

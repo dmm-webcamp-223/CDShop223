@@ -8,7 +8,7 @@ class AdminUsersController < ApplicationController
 
 	def show
 		@user = User.with_deleted.find(params[:id])
-		@recept_logs = @user.recept_logs.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
+		@recept_logs = @user.recept_logs.with_deleted.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
 	end
 
 	def update
@@ -22,7 +22,7 @@ class AdminUsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-		user.destroy
+		@user.destroy
 		redirect_to admin_users_path
 	end
 

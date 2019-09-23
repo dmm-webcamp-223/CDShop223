@@ -47,8 +47,9 @@
           <%= f.submit "更新", class:"btn btn-primary btn-sm" %>
         </div>
         <% end %>
-        <%= button_to "アカウントの削除", user_registration_path(@user), data: { confirm: "よろしいですか？" }, method: :delete %>
         <%= link_to "戻る", :back %>
+        <%= button_to "アカウントの削除", user_registration_path(@user), data: { confirm: "よろしいですか？" }, method: :delete %>
+        
       </div>
     </div>
   </div>

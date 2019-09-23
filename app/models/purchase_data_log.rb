@@ -1,7 +1,6 @@
 class PurchaseDataLog < ApplicationRecord
-	belongs_to :recept_log
+	belongs_to :recept_log, -> {with_deleted}
 	belongs_to :package
-  
- #   scope :week, -> { where("created_at < ?",TIme.zone.now-1.weeks.ago) }
+    acts_as_paranoid
   scope :week, -> { where("created_at > ?",Time.zone.now-1.week) }
 end
