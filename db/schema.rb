@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_105648) do
+ActiveRecord::Schema.define(version: 2019_09_23_060313) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_105648) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.boolean "disc_status", default: false, null: false
+    t.integer "week", default: 0
     t.index ["deleted_at"], name: "index_packages_on_deleted_at"
   end
 
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_105648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total", default: 0
+    t.integer "total_plus_postage", default: 0
   end
 
   create_table "ship_adresses", force: :cascade do |t|

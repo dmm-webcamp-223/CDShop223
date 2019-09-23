@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def edit
     @user = User.find(params[:id])
   end
@@ -13,8 +14,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.with_deleted.find(params[:id])
-    @recept_logs = @user.recept_logs.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
+
+      @user = User.with_deleted.find(params[:id])
+      @recept_logs = @user.recept_logs.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
+    
+      if @user.id != current_user.id
+        redirect_to user_path(current_user.id)
+      end
+        
+
   end
 
   private
