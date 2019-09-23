@@ -18,6 +18,13 @@ class AdminUsersController < ApplicationController
 			render action: :edit
 		end
 	end
+  
+   def restore_user
+     @user = User.with_deleted.find(params[:id])
+     @user.restore
+     redirect_to admin_users_path
+   end
+  
 
 	def destroy
 		@user = User.find(params[:id])
