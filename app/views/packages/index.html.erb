@@ -1,64 +1,62 @@
 <style>
-.row package {
-	display:inline-block;
-}
-.bxslider {
- height:500px;
-}
-  
-
-
+	.row package {
+		display:inline-block;
+	}
+	.bxslider {
+		height:500px;
+	}
 </style>
 
 <div class="container packages_in">
 	<ul class="bxslider ">
 		<% @packages.each do |pack| %>
-				<li>
-					<%= link_to package_path(pack.id) do %>
-					 <%= attachment_image_tag pack, :disc_image, size:"400x300" %>
-					 <% end %>
-					 <h5 class="col-xs-offset-5"><%= pack.title %></h5>
-				</li>
+		<li>
+			<%= link_to package_path(pack.id) do %>
+			<%= attachment_image_tag pack, :disc_image, size:"400x300" %>
 			<% end %>
-		</ul>
-				<div class="row">
-					<h2>新着順</h2>
-					<div class="packages">
-				    	<% @packages.each do |package| %>
-								<% if package.disc_status %>
-				    		<div class="col-xs-3">
-				      		<%= link_to package_path(package.id) do%>
-				        		<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
-				      		<% end %>
-										<% if package.disc_stock == 0 %>
-											<span class="label label-danger">売り切れ</span><br>
-										<% else %>
-										<br>
-										<% end %>
-				        	<%= package.artist.artist %><br>
-				        	<%= package.title %><br>
-				          <%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
-								</div>
-							
-
-							 <%# 販売停止中なら %>
-								<% else %>
-								<div class="col-xs-3">
-										<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
-										<% if package.disc_stock == 0 %>
-											<span class="label label-warning">販売停止</span><span class="label label-danger">売り切れ</span><br>
-										<% else %>
-										<span class="label label-warning">販売停止</span><br>
-										<% end %>
-									<%= package.artist.artist %><br>
-									<%= package.title %><br>
-									<%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
-								</div>
-                            <% end %>
-				        <% end %>
-				</div>
-				<div class="col-xs-7 col-xs-offset-5">
-    			<%= paginate @packages, class: "paginate" %>
-				</div>
+			<h5 class="col-xs-offset-5"><%= pack.title %></h5>
+		</li>
+		<% end %>
+	</ul>
+	<div class="row">
+		<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+		<% end %>
+		<h2>新着順</h2>
+		<div class="packages">
+			<% @packages.each do |package| %>
+			<% if package.disc_status %>
+			<div class="col-xs-3">
+				<%= link_to package_path(package.id) do%>
+				<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
+				<% end %>
+				<% if package.disc_stock == 0 %>
+				<span class="label label-danger">売り切れ</span><br>
+				<% else %>
+				<br>
+				<% end %>
+				<%= package.artist.artist %><br>
+				<%= package.title %><br>
+				<%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
+			</div>
+			<%# 販売停止中なら %>
+			<% else %>
+			<div class="col-xs-3">
+				<%= attachment_image_tag package, :disc_image, size:"100x100", fallback: "no_image.jpg" %><br>
+				<% if package.disc_stock == 0 %>
+				<span class="label label-warning">販売停止</span><span class="label label-danger">売り切れ</span><br>
+				<% else %>
+				<span class="label label-warning">販売停止</span><br>
+				<% end %>
+				<%= package.artist.artist %><br>
+				<%= package.title %><br>
+				<%= (package.price + package.price * 0.08).to_i %><strong>円</strong><br>
+			</div>
+			<% end %>
+			<% end %>
 		</div>
+		<div class="col-xs-7 col-xs-offset-5">
+			<%= paginate @packages, class: "paginate" %>
+		</div>
+	</div>
 </div>
