@@ -6,7 +6,8 @@ class ShipDataLogsController < ApplicationController
   end
 
   def index
-    @logs = ShipDataLog.all.reverse #逆順
+    @logs = ShipDataLog.all.with_deleted.reverse #逆順
+    @packs = Package.with_deleted
   end
 
   def create

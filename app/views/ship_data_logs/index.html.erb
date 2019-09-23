@@ -23,7 +23,8 @@
       <% @logs.each do |log| %>
       <tbody>
         <tr>
-            <td><%= log.package.title %></td>
+          <% pack = @packs.find(log.package_id) %>
+            <td><%= pack.title %></td>
             <td><%= log.created_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= log.ship_number %></td>
             <td><%= log.supplier %></td>
