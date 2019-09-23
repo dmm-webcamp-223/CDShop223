@@ -1,5 +1,8 @@
 <div class="container">
 	<h2>ユーザー詳細</h2>
+	<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+	<% end %>
 	<table border="1">
 		<td><%= @user.kanzi_fullname %></td>
 		<td><%= @user.kana_fullname %></td>
@@ -9,7 +12,7 @@
 		<td><%= @user.address %></td>
 	</table>
 
-	<%= link_to "編集", edit_user_registration_path, class: "btn btn-success btn-sm" %>
+	<%= link_to "編集", edit_admin_user_path, class: "btn btn-success btn-sm" %>
 	<%= link_to "削除", admin_user_path, class: "btn btn-danger btn-sm", method: :delete, "data-comfirm" => "よろしいですか？" %><br>
 	<hr>
 
@@ -24,22 +27,22 @@
 	<% recept.purchase_data_logs.each do |purchase_data_log| %>
 	<table border="1" style="border-collapse: collapse">
 		<tr>
-			<td class="col-xs-1"><%= key %></td>
+			<td class="col-xs-1"><%= purchase_data_log.created_at.to_s(:date) %></td>
 			<td class="col-xs-1"><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
 			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
 				<%= purchase_data_log.purchase_price * purchase_data_log.numbers %>
-			<td class="col-xs-4"><%= recept.delivering_adddress %></td>
-			<% if recept.delivered_status %>
-			<td class="col-xs-1"><span class="label label-success">配送済み</span></td>
-			<% else %>
-			<td class="col-xs-1"><span class="label label-danger">未発送</span></td>
-			<% end %>
-		</tr>
-	</table>
-	<% end %>
-	<% end %>
-	<strong>月別合計購入金額:<%= recept_log.pluck(:total).sum %>円</strong>
-	<% end %>
-	<% end %>
-</div>
+				<td class="col-xs-4"><%= recept.delivering_adddress %></td>
+				<% if recept.delivered_status %>
+				<td class="col-xs-1"><span class="label label-success">配送済み</span></td>
+				<% else %>
+				<td class="col-xs-1"><span class="label label-danger">未発送</span></td>
+				<% end %>
+			</tr>
+		</table>
+		<% end %>
+		<% end %>
+		<strong>月別合計購入金額:<%= recept_log.pluck(:total).sum %>円</strong>
+		<% end %>
+		<% end %>
+	</div>

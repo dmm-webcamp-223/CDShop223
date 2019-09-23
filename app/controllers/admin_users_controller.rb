@@ -31,7 +31,7 @@ class AdminUsersController < ApplicationController
 	end
 
 	private
-	def user_parms
+	def user_params
 		params.require(:user).permit(:email, :name_kanzi_sei, :name_kanzi_mei, :name_kana_sei, :name_kana_mei, :postal_code, :address, :phone_number)
 	end
 
