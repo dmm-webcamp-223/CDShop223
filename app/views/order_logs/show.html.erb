@@ -10,8 +10,9 @@
               </tr>
         </thead>
               <% @logs.each do |log| %>
+              <% pack = @packs.find(log.package_id) %>
               <tr>
-                    <th><%= log.package.title %></th>
+                    <th><%= pack.title %></th>
                     <th><%= log.numbers %> </th>
                     <th><%= log.purchase_price %> </th>
                     <th><%= log.numbers * log.purchase_price %></th>

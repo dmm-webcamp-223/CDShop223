@@ -10,6 +10,7 @@ class OrderLogsController < ApplicationController
 
   def show
     @logs = PurchaseDataLog.with_deleted.where(recept_log_id: params[:id])
+    @packs = Package.with_deleted
   end
 
   def update
