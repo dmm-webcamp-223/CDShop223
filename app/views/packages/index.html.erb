@@ -1,25 +1,28 @@
 <style>
-.row package {
-	display:inline-block;
-}
-.bxslider {
- height:500px;
-}
-  
-
-
+	.row package {
+		display:inline-block;
+	}
+	.bxslider {
+		height:500px;
+	}
 </style>
 
 <div class="container packages_in">
 	<ul class="bxslider ">
 		<% @packages.each do |pack| %>
-				<li>
-					<%= link_to package_path(pack.id) do %>
-					 <%= attachment_image_tag pack, :disc_image, size:"400x300" %>
-					 <% end %>
-					 <h5 class="col-xs-offset-5"><%= pack.title %></h5>
-				</li>
+		<li>
+			<%= link_to package_path(pack.id) do %>
+			<%= attachment_image_tag pack, :disc_image, size:"400x300" %>
 			<% end %>
+      <h5 class="col-xs-offset-5"><%= pack.title %></h5>
+		</li>
+		<% end %>
+	</ul>
+	<div class="row">
+		<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+		<% end %>
+
 		</ul>
 				<div class="row">
                     <h2>週間ランキング</h2>
@@ -97,5 +100,7 @@
 				<div class="col-xs-7 col-xs-offset-5">
     			<%= paginate @packages, class: "paginate" %>
 				</div>
+
 		</div>
+	</div>
 </div>

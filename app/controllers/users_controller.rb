@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
       @user = User.with_deleted.find(params[:id])
       @recept_logs = @user.recept_logs.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}
     
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
         redirect_to user_path(current_user.id)
       end
         
+
   end
 
   private

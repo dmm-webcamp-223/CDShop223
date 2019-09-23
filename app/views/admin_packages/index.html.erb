@@ -7,6 +7,9 @@
 
 <div class="container">
 	<div class="row">
+		<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+		<% end %>
 		<h2>新着順</h2>
 		<% @packages.each do |package| %>
 		<div class="col-xs-3">

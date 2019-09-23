@@ -14,10 +14,12 @@
 	<% recept.purchase_data_logs.each do |purchase_data_log| %>
 	<table border="1" style="border-collapse: collapse">
 		<tr>
-			<td class="col-xs-1"><%= key %></td>
+			<td class="col-xs-1"><%= purchase_data_log.created_at.to_s(:date) %></td>
 			<td class="col-xs-1"><%= attachment_image_tag purchase_data_log.package, :disc_image, size:"150x150" %></td>
 			<td class="col-xs-2"><%= purchase_data_log.package.title %></td>
+
 			<td class="col-xs-3"><%= purchase_data_log.numbers %>個<br>
+
               <%= purchase_data_log.purchase_price * purchase_data_log.numbers %></td>
 				<td class="col-xs-4"><%= recept.delivering_adddress %></td>
 				<% if recept.delivered_status %>
@@ -33,3 +35,4 @@
 		<% end %>
 		<% end %>
 	</div>
+
