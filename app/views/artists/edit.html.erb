@@ -1,0 +1,13 @@
+<div class="container">
+	<h1>アーティスト編集</h1>
+	<hr>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= form_for(@artist) do |f| %>
+			<%= f.text_field :artist, autofocus: true, class:"form-control", autocomplete: "on" %>
+			<%= f.submit "更新", class:"btn btn-primary btn-sm" %><%= notice%>
+			<% end %>
+			<%= link_to "戻る", :back %>
+		</div>
+	</div>
+</div>

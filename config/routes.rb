@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
-  resources :admin_users 
+  resources :admin_users
     patch '/adimin_users/restore_user/:id' => 'admin_users#restore_user' ,as: 'admin_restore'
-  
+
   resources :admin_packages
   resources :packages, only: [:index, :show] do
     resources :cart_items, only: [:create, :update]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
 
-  resources :artists, only: [:new, :create, :destroy]
+  resources :artists, only: [:new, :create, :edit, :update]
   resources :labels, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :destroy]
 
