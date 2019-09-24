@@ -7,14 +7,26 @@ class LabelsController < ApplicationController
 
   def create
     label = Label.new(label_params)
-    label.save
-    redirect_to new_label_path
+    if label.save
+    redirect_to new_label_path 
+    else
+    redirect_to new_label_path , notice: "名前がありません"
+    end
+   
+  end
+  
+  def edit
+    @label = Label.find(params[:id])
   end
 
-  def destroy
+  def update
     label = Label.find(params[:id])
-    label.destroy
-    redirect_to new_label_path
+   
+    if  label.update(label_params)
+    redirect_to new_label_path 
+    else
+    redirect_to edit_label_path , notice: "名前がありません"
+    end
   end
 
   private
