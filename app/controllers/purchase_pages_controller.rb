@@ -83,7 +83,7 @@ end
 
 def destroy
  @recept_log = ReceptLog.order('id DESC').find_by(user_id: params[:user_id])
- @recept_log.delete
+ @recept_log.really_destroy! 
 
  redirect_to user_cart_purchase_page_path(current_user.id, current_cart.id,current_cart.id)
 end
