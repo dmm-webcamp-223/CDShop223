@@ -13,6 +13,7 @@
         </thead>
             <h1><u>注文受付一覧</u></h1><br>
               <% @recept_logs.each do |log| %>
+              <% if log.total > 1 %>
               <tr>
                 <% user = @users.find(log.user_id) %>
                     <th><%= user.kanzi_fullname %> </th>
@@ -31,6 +32,7 @@
                     <% end %>
 
              </tr>
+              <% end %>
              <% end %>
              <%= paginate @recept_logs, class: "paginate" %>
       </table>
