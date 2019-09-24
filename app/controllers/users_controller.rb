@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
       @user = User.with_deleted.find(params[:id])
       @packs = Package.with_deleted
       @recept_logs = @user.recept_logs.with_deleted.group_by{|recept_log|recept_log.created_at.strftime('%Y/%m')}

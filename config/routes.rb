@@ -20,8 +20,10 @@ Rails.application.routes.draw do
 
   resources :ship_data_logs, only: [:new, :create, :update, :index, :edit]
 
-  resources :artists, only: [:new, :create, :edit, :update]
-  resources :labels, only: [:new, :create, :destroy]
+
+  resources :artists, only: [:new, :create, :destroy]
+  resources :labels, only: [:new, :create, :update, :edit]
+
   resources :genres, only: [:new, :create, :destroy]
 
 
