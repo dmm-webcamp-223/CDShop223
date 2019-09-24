@@ -1,0 +1,8 @@
+<h1>レーベル名を変更してください</h1>
+<%= form_for @label, url: label_path do |f| %>
+<h2>名前を変更してください</h2>
+<%= f.text_field :label %>
+<%= f.submit "変更を確定" %>
+<p><%= notice %></p>
+<%= link_to "戻る", new_label_path %>
+<% end %>
