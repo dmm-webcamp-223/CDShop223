@@ -119,8 +119,6 @@ ActiveRecord::Schema.define(version: 2019_09_23_115702) do
     t.datetime "updated_at", null: false
     t.integer "total", default: 0
     t.integer "total_plus_postage", default: 0
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_recept_logs_on_deleted_at"
   end
 
   create_table "ship_adresses", force: :cascade do |t|
