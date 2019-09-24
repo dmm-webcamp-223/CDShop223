@@ -1,3 +1,4 @@
 class Artist < ApplicationRecord
-  has_many :packages, dependent: :destroy
+	validates :artist, presence: true, length: { minimum: 1 }
+	has_many :packages, dependent: :destroy
 end
