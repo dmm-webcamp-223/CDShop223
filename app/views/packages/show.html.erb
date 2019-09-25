@@ -37,6 +37,26 @@
 				<li><h4><span class="label label-default">ジャンル</span></h4></li>
 				<li><%= @package.genre.category %></li><br>
 				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li><br>
+           
+        <!-- ログインしてるユーザーのいいね -->
+            <% if user_signed_in? %>
+                <% if @package.favorited_by?(current_user) %>
+                  <li>
+                    <%= link_to package_favorites_path(@package), method: :delete do %>
+                      <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+                        <%= @package.favorites.count %> いいね
+                <% end %>
+                  </li>
+                <% else %>
+                   <li>
+                     <%= link_to package_favorites_path(@package), method: :post do %>
+                      <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+                        <%= @package.favorites.count %> いいね
+                <% end %>
+                   </li>  
+                <% end %>
+           <% end %>
+        
 						<% if @package.disc_stock == 0 %>
 							<li><span class="label label-danger">売り切れ</span></li>
 						<% else %>

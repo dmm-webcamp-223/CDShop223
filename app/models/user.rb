@@ -30,6 +30,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
   has_one :cart
   has_many :recept_logs, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   acts_as_paranoid
 
   composed_of :kanzi_fullname,

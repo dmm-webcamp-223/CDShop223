@@ -12,6 +12,7 @@ class CartsController < ApplicationController
       c.save
     end
     
+    # バリデーション
      cart_pass = Cart.find(params[:id])
      user_pass = User.find_by(id: params[:user_id])
        if current_cart.id != cart_pass.id
