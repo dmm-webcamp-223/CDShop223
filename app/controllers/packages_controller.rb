@@ -8,16 +8,15 @@ class PackagesController < ApplicationController
       f.week = purchasedata.where(package_id: f.id).sum(:numbers)
       f.save
     end
-    
-   
     @packages_week = Package.order('week DESC').limit(4)
   #ここまで
     
-    @packages = Package.page(params[:page]).reverse_order.search(params[:search])
-
+  #いいねランキング
+    package_fav = Package.all
+    @package_fav = package_fav.order('favorite_num DESC').limit(4)
+  #ここまで
     
-   # @purchase_numbers=@purchasedata.group(:package_id).sum(:numbers)
-
+    @packages = Package.page(params[:page]).reverse_order.search(params[:search])
     
   end
 

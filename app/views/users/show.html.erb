@@ -37,4 +37,19 @@
 		<h2><strong>月別合計購入金額:<%= recept_log.pluck(:total).sum %>円(送料別)</strong></h2>
 		<% end %>
 		<% end %>
+  <div class="border"></div>
+  <strong><h1 id="your-fav">あなたがいいねした商品</h1></strong>
+     <div class ="row fav-pack">
+        <% @favorites.each do |f| %>
+          <div class="col-lg-3">
+            <%= link_to package_path(f.package.id) do %>
+            <%= attachment_image_tag f.package, :disc_image, size:"100x100" %></br>
+            <%= f.package.title %></br>
+            <%= f.package.artist.artist %></br>
+            <span>総いいね数</span></br>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"><%= f.package.favorite_num %></span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 	</div>

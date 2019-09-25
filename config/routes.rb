@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :admin_packages
   resources :packages, only: [:index, :show] do
     resources :cart_items, only: [:create, :update]
+    resource :favorites, only: [:create, :destroy]
     post '/add_item' => 'carts#add_item'
     delete '/delete_item' => 'carts#delete_item'
   end
