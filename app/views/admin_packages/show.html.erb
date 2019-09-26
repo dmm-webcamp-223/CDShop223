@@ -38,22 +38,55 @@
 				<li><%= @package.genre.category %></li><br>
 				<li><strong>値段　</strong><%= @package.price %><strong>円</strong></li><br>
 				<!-- 販売状況の変化 -->
-					<li><% if  @package.disc_status %>
-							  <div class="sold">販売中</div>
-							<% else %>
-								<div class="soldout">販売停止中</div><br>
-							<% end %>
-					</li>
+				<li><% if  @package.disc_status %>
+					<div class="sold">販売中</div>
+					<% else %>
+					<div class="soldout">販売停止中</div><br>
+					<% end %>
+				</li>
 				<%= form_for(@package, url: admin_package_path(@package)) do |f| %>
-							  <li>
-									<%= f.check_box :disc_status, {}, checked_value = "true", unchecked_value = "false" %>
-								</li>
-								<li><%= f.submit "販売状況の更新" %></li>
-							<% end %>
+				<li>
+					<%= f.check_box :disc_status, {}, checked_value = "true", unchecked_value = "false" %>
+				</li>
+				<li><%= f.submit "販売状況の更新" %></li>
+				<% end %>
 			</ul>
-					<li><strong>在庫数　<strong><%= @package.disc_stock %></li><br>
-					<li><%= link_to "編集", edit_admin_package_path(@package) %><li><br>
+			<li><strong>在庫数　</strong><%= @package.disc_stock %></li><br>
+			<li><%= link_to "編集", edit_admin_package_path(@package) %></li><br>
 		</div>
-  <%= render 'packages/list', package: @packages, discs: @discs %>
+		<%= render 'packages/list', package: @packages, discs: @discs %>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="review-list bt style-2" id="reviews">
+			<div class="float-wrapper">
+				<h4 class="review-count"><%= @package.reviews.count %>件のレビュー</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<table class="table table-borderd">
+			<thead>
+				<tr>
+					<th class="col-xs-2">日時</th>
+					<th class="col-xs-2">ユーザー</th>
+					<th class="col-xs-6">レビュー</th>
+					<th class="col-xs-1"></th>
+					<th class="col-xs-1"></th>
+				</tr>
+			</thead>
+			<% @package.reviews.each do |review| %>
+			<tbody>
+				<tr>
+					<td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+					<td><%= review.user.kanzi_fullname %></td>
+					<td><%= review.comment %></td>
+					<td><%= link_to "編集", edit_package_review_path(review.package.id, review.id), class: "btn btn-success btn-sm" %></td>
+					<td><%= link_to "削除", package_review_path(review.package.id, review.id), class: "btn btn-danger btn-sm", method: :delete, "data-comfirm" => "このレビューを削除しますか？" %></td>
+				</tr>
+			</tbody>
+			<% end %>
+		</table>
 	</div>
 </div>

@@ -10,18 +10,16 @@ class PackagesController < ApplicationController
     end
     @packages_week = Package.order('week DESC').limit(4)
   #ここまで
-    
   #いいねランキング
     package_fav = Package.all
     @package_fav = package_fav.order('favorite_num DESC').limit(4)
   #ここまで
-    
     @packages = Package.page(params[:page]).reverse_order.search(params[:search])
-    
   end
 
   def show
   	@package = Package.find(params[:id])
+    @review = Review.new
     @package.price = @package.price + @package.price * 0.08
     @discs = @package.discs.all
   end
