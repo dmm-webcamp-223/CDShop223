@@ -42,14 +42,14 @@
             <% if user_signed_in? %>
                 <% if @package.favorited_by?(current_user) %>
                   <li>
-                    <%= link_to package_favorites_path(@package), method: :delete do %>
+                    <%= link_to package_favorites_path(@package), method: :delete, "data-disable-with" => "送信中..." do %>
                       <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
                         <%= @package.favorites.count %> いいね
                 <% end %>
                   </li>
                 <% else %>
                    <li>
-                     <%= link_to package_favorites_path(@package), method: :post do %>
+                     <%= link_to package_favorites_path(@package), method: :post, "data-disable-with" => "送信中..." do %>
                       <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
                         <%= @package.favorites.count %> いいね
                 <% end %>
