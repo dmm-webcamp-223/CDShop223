@@ -8,7 +8,7 @@ class Package < ApplicationRecord
   has_many :ship_data_logs, dependent: :destroy
   has_many :purchase_data_logs, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-  
+  has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

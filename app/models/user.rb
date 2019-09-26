@@ -10,26 +10,22 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :email, presence: true
-  
+
   #名前の文字数制限
   validates :name_kanzi_sei,
   length: { minimum: 1, maximum: 6}
-  
   validates :name_kanzi_mei,
   length: { minimum: 1, maximum: 6}
-  
   validates :name_kana_sei,
   length: { minimum: 1, maximum: 13}
-  
   validates :name_kana_mei,
   length: {minimum: 1, maximum: 15}
-  
-  
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
   has_one :cart
   has_many :recept_logs, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   acts_as_paranoid
 
